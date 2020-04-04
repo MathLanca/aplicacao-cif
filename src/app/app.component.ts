@@ -26,7 +26,6 @@ export class AppComponent implements OnChanges {
     );
   }
   onActivate(componentReference) {
-    console.log(componentReference)
     this.ngOnChanges();
   }
 
@@ -38,7 +37,6 @@ export class AppComponent implements OnChanges {
   ngOnInit() {
     this.isLogged = this.islogged();
     this.greetings = this.setGreetigns();
-    console.log(this.greetings);
     if (this.sessionService.getUserLogged() == null) {
       return this.route.navigate(['']);
     }
@@ -53,22 +51,16 @@ export class AppComponent implements OnChanges {
 
   setGreetigns() {
     this.hours = new Date().getHours();
-    console.log(this.hours);
     if (this.hours >= 3 && this.hours < 12) {
-      console.log('Dia.. ' + this.hours);
       return "Bom Dia, " + localStorage.name + "!";
     }
-
     if (this.hours >= 12 && this.hours < 18) {
-      console.log('Tarde.. ' + this.hours);
       return "Boa Tarde, " + localStorage.name + "!";
     }
-
     if (this.hours >= 18 || this.hours < 3) {
-      console.log('Notie.. ' + this.hours);
       return "Boa Notie, " + localStorage.name + "!";
     }
-    console.log('nao caiu em nada')
+
   }
 
   viewProfile() {
