@@ -19,8 +19,8 @@
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
               <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <mat-icon class="mack-white-icon" svgIcon="mack_white"></mat-icon>
-            <span> Aplicação CIF</span>
+            <span class="app-name-header" (click)="goHome()"> Aplicação CIF</span>
+            <mat-icon (click)="goHome()" class="mack-white-icon" svgIcon="mack_white"></mat-icon>
             <span class="spacer"></span>
             <span *ngIf="greetings != null && isLogged" class="greeting-span">{{ greetings }}</span>
             <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><mat-icon class="person-icon">person</mat-icon></button>

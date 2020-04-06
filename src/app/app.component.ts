@@ -49,6 +49,10 @@ export class AppComponent implements OnChanges {
     return false;
   }
 
+  goHome(){
+    this.route.navigate(['home']);
+  }
+
   setGreetigns() {
     this.hours = new Date().getHours();
     if (this.hours >= 3 && this.hours < 12) {

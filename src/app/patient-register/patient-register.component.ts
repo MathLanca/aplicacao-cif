@@ -22,7 +22,7 @@ export class PatientRegisterComponent implements OnInit {
   registered = false;
   personForm: FormGroup;
   addressForm: FormGroup;
-  states: any = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'TO'];
+  states: any = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO'];
   Roles: any = ['Admin', 'Paciente', 'Terapeuta'];
 
   genders: Gender[] = [
@@ -93,6 +93,10 @@ export class PatientRegisterComponent implements OnInit {
       'sex': new FormControl(this.person.sex, [Validators.required]),
       'telephoneNumber': new FormControl(this.person.telephoneNumber, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
       'birthDate': new FormControl(this.person.birthDate, [Validators.required]),
+      'patient': new FormGroup({
+        'therapistID': new FormControl(''),
+        'note': new FormControl('')
+      })
     });
   }
 
@@ -116,38 +120,42 @@ export class PatientRegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     this.person = this.personForm.value;
     this.address = this.addressForm.value;
     this.person.address = this.address;
     this.person.active = true;
     this.person.patient.therapistID = this.sessionService.getUserLogged();
     this.person.birthDate = new Date(this.person.birthDate).toISOString();
-    // this.registerService.register(this.person)
-    //   .subscribe(
-    //     (res: any) => {
-    //       this.snackbar.open('Paciente Cadastrado \nCom sucesso!', 'Accept', {
-    //         duration: 2000,
-    //         panelClass: ['green-snackbar']
-    //       });
-    //     },
-    //     (erro: any) => {
-    //       console.log(erro);
-    //       if(erro.message === "EMAIL_ALREADY_REGISTERED"){
-    //         this.myStepper.previous();
-    //         this.snackbar.open('Email já cadastrado!', 'dismiss', {
-    //           duration: 4000,
-    //           panelClass: ['red-snackbar']
-    //         });
-    //       }
-    //       if(erro.message === "CPF_ALREADY_REGISTERED"){
-    //         this.myStepper.previous();
-    //         this.snackbar.open('Cpf já cadastrado!', 'dismiss', {
-    //           duration: 4000,
-    //           panelClass: ['red-snackbar']
-    //         });
-    //       }
-    //     }
-    //   )
+     this.registerService.register(this.person)
+       .subscribe(
+         (res: any) => {
+          this.loading = false;
+           this.snackbar.open('Paciente Cadastrado \nCom sucesso!', 'Accept', {
+             duration: 2000,
+             panelClass: ['green-snackbar']
+           });
+           this.router.navigate(['home']);
+         },
+         (erro: any) => {
+          this.loading = false;
+           console.log(erro);
+           if(erro.message === "EMAIL_ALREADY_REGISTERED"){
+             this.myStepper.previous();
+             this.snackbar.open('Email já cadastrado!', 'dismiss', {
+               duration: 4000,
+               panelClass: ['red-snackbar']
+             });
+           }
+           if(erro.message === "CPF_ALREADY_REGISTERED"){
+             this.myStepper.previous();
+             this.snackbar.open('Cpf já cadastrado!', 'dismiss', {
+               duration: 4000,
+               panelClass: ['red-snackbar']
+             });
+           }
+         }
+       )
     }
 }
 

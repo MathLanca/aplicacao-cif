@@ -70,7 +70,15 @@ mat-icon.icon-side-menu {
 }
 
 .mack-white-icon {
-    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.mack-white-icon:hover {
+    cursor: pointer;
+}
+
+.app-name-header:hover {
+    cursor: pointer;
 }
 
 .header-toolbar {

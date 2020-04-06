@@ -152,6 +152,17 @@ mat-form-field {
     color: red;
 }
 
+textarea {
+    resize: vertical;
+}
+
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
 @media(max-width: 768px) {
      ::ng-deep .mat-step-label {
         display: none !important;

@@ -26,7 +26,8 @@ import {
   MatSnackBarModule,
   MatProgressSpinnerModule,
   MatStepperModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressBarModule
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -78,6 +79,7 @@ import { PatientRegisterComponent } from './patient-register/patient-register.co
     MatStepperModule,
     MatMenuModule,
     LayoutModule,
+    MatProgressBarModule
   ],
   providers: [
     SessionService,

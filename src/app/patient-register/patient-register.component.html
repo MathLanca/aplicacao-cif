@@ -60,6 +60,10 @@
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
+                    <mat-form-field formGroupName="patient" appearance="fill">
+                        <mat-label>Observações (Opcional)</mat-label>
+                        <textarea matInput rows="10" formControlName="note" placeholder="Observações"></textarea>
+                    </mat-form-field>
                     <div class="nextStep">
                         <button mat-button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="btn-block btn-cancel">
                             <mat-icon>remove_circle_outline</mat-icon>
@@ -123,7 +127,10 @@
                             Concluir
                             <mat-icon>done_all</mat-icon>
                         </button>
-                        <mat-progress-spinner *ngIf="loading" class="example-margin" mode="indeterminate" color="warn"></mat-progress-spinner>
+                        <section *ngIf="loading" class="example-section">
+                            <mat-progress-bar class="example-margin" mode="indeterminate">
+                            </mat-progress-bar>
+                        </section>
                     </div>
                 </form>
             </mat-step>

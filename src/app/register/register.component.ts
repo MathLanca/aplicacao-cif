@@ -161,7 +161,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         resp => {
           this.loading = false;
-          this.sessionService.saveUserLoggedId(resp.id)
+          this.sessionService.saveUserLoggedId(resp.id, resp.firstName)
           console.log('successful login!');
           this.router.navigate(['home']);
         }, error => {
