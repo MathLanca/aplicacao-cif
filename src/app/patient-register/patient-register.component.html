@@ -31,6 +31,7 @@
                         <input matInput placeholder="Senha" type="password" formControlName="password" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
+                            <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
                         </div>
                     </mat-form-field>
                     <mat-form-field>
@@ -38,6 +39,7 @@
                         <input matInput placeholder="Senha" (change)="validatePass()" type="password" formControlName="confirmPass" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
+                            <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
                         </div>
                     </mat-form-field>
 
