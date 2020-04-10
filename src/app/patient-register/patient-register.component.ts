@@ -5,14 +5,19 @@ import { Router } from '@angular/router';
 import { SessionService } from '../service/session.service';
 import { AuthService } from '../service/auth.service';
 import { RegisterService } from '../service/register.service';
-import { MatSnackBar, DateAdapter, MatStepper } from '@angular/material';
+import { MatSnackBar, DateAdapter, MatStepper, MAT_DATE_FORMATS } from '@angular/material';
 import { Person } from '../interfaces/person';
 import { Address } from '../interfaces/address';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../shared/format-datepicker';
 
 @Component({
   selector: 'app-patient-register',
   templateUrl: './patient-register.component.html',
-  styleUrls: ['./patient-register.component.css']
+  styleUrls: ['./patient-register.component.css'],
+  providers: [
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  ]
 })
 export class PatientRegisterComponent implements OnInit {
 

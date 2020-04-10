@@ -6,7 +6,7 @@
 
         <mat-horizontal-stepper linear="true" #stepper>
             <mat-step [stepControl]="personForm">
-                <form [formGroup]="personForm">
+                <form [formGroup]="personForm" autocomplete="off">
                     <ng-template matStepLabel>Dados Pessoais</ng-template>
                     <mat-form-field>
                         <mat-label>Nome</mat-label>
@@ -31,6 +31,8 @@
                         <input matInput placeholder="Senha" type="password" formControlName="password" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
+                            <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
+
                         </div>
                     </mat-form-field>
                     <mat-form-field>
@@ -38,6 +40,7 @@
                         <input matInput placeholder="Senha" (change)="validatePass()" type="password" formControlName="confirmPass" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
+                            <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
                         </div>
                     </mat-form-field>
 
@@ -56,7 +59,7 @@
 
                     <mat-form-field>
                         <mat-label>Data de Nascimento</mat-label>
-                        <input matInput [matDatepicker]="picker" required formControlName="birthDate">
+                        <input matInput [matDatepicker]="picker" required readonly (click)="picker.open()" formControlName="birthDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -76,7 +79,7 @@
                 </form>
             </mat-step>
             <mat-step [stepControl]="addressForm">
-                <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="addressForm" autocomplete="off" (ngSubmit)="onSubmit()">
                     <ng-template matStepLabel>Dados Residênciais</ng-template>
                     <mat-form-field>
                         <mat-label>CEP</mat-label>
@@ -123,7 +126,10 @@
                             Concluir
                             <mat-icon>done_all</mat-icon>
                         </button>
-                        <mat-progress-spinner *ngIf="loading" class="example-margin" mode="indeterminate" color="warn"></mat-progress-spinner>
+                        <section *ngIf="loading" class="example-section">
+                            <mat-progress-bar class="example-margin" mode="indeterminate">
+                            </mat-progress-bar>
+                        </section>
                     </div>
                 </form>
             </mat-step>

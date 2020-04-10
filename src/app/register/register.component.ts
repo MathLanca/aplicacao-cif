@@ -4,16 +4,21 @@ import { Person } from '../interfaces/person';
 import { Address } from '../interfaces/address';
 import { CepService } from '../service/cep.service';
 import { MatSnackBar, MatStepper } from '@angular/material';
-import { DateAdapter } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { RegisterService } from '../service/register.service';
 import { AuthService } from '../service/auth.service';
 import { SessionService } from '../service/session.service';
 import { Router } from '@angular/router';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../shared/format-datepicker';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+  ]
 })
 
 export class RegisterComponent implements OnInit {
@@ -33,13 +38,12 @@ export class RegisterComponent implements OnInit {
     { value: 'O', viewValue: 'Não informar' }
   ];
 
-  constructor(private cepService: CepService, private router: Router, 
-    private sessionService: SessionService, private authService: AuthService, 
-    private registerService: RegisterService, private snackbar: MatSnackBar, 
+  constructor(private cepService: CepService, private router: Router,
+    private sessionService: SessionService, private authService: AuthService,
+    private registerService: RegisterService, private snackbar: MatSnackBar,
     private _adapter: DateAdapter<any>) {
     this.personForm = this.createPersonForm();
     this.addressForm = this.createAddressForm();
-    this._adapter.setLocale('br');
   }
 
 
@@ -94,7 +98,7 @@ export class RegisterComponent implements OnInit {
       'cpf': new FormControl(this.person.lastName, [Validators.required, Validators.pattern('[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}')]),
       'sex': new FormControl(this.person.sex, [Validators.required]),
       'telephoneNumber': new FormControl(this.person.telephoneNumber, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
-      'birthDate': new FormControl(this.person.birthDate, [Validators.required]),
+      'birthDate': new FormControl(this.person.birthDate),
     });
   }
 
@@ -111,16 +115,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     console.log('TO AQUI')
-    if(this.sessionService.getUserLogged() != null){
+    if (this.sessionService.getUserLogged() != null) {
       return this.router.navigate(['home']);
     }
   }
 
-  goBack2Login(){
+  goBack2Login() {
     this.router.navigate(['']);
   }
 
   onSubmit() {
+    this.loading = true;
     this.person = this.personForm.value;
     this.address = this.addressForm.value;
     this.person.address = this.address;
@@ -136,15 +141,16 @@ export class RegisterComponent implements OnInit {
           this.login(this.person.cpf, this.person.password);
         },
         (erro: any) => {
+          this.loading = false;
           console.log(erro);
-          if(erro.message === "EMAIL_ALREADY_REGISTERED"){
+          if (erro.message === "EMAIL_ALREADY_REGISTERED") {
             this.myStepper.previous();
             this.snackbar.open('Email já cadastrado!', 'dismiss', {
               duration: 4000,
               panelClass: ['red-snackbar']
             });
           }
-          if(erro.message === "CPF_ALREADY_REGISTERED"){
+          if (erro.message === "CPF_ALREADY_REGISTERED") {
             this.myStepper.previous();
             this.snackbar.open('Cpf já cadastrado!', 'dismiss', {
               duration: 4000,
@@ -153,9 +159,9 @@ export class RegisterComponent implements OnInit {
           }
         }
       )
-    }
-    
-  private login(login:string, password:string){
+  }
+
+  private login(login: string, password: string) {
     console.log('tentando fazer login');
     this.authService.login(login, password)
       .subscribe(
