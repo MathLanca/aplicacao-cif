@@ -81,6 +81,10 @@ export class AppComponent implements OnChanges {
     this.route.navigate(['patientRegister']);
   }
 
+  redirectToPatientList(){
+    this.route.navigate(['patientList']);
+  }
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

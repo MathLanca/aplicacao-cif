@@ -6,6 +6,9 @@ import { SessionService } from '../service/session.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import { PatientListService } from '../service/patient-list.service';
+import { MatSnackBar, MatStepper } from '@angular/material';
+import { Person } from '../interfaces/person';
 
 @Component({
   selector: 'app-home',
@@ -21,5 +24,7 @@ export class HomeComponent implements OnInit {
     if(this.session.getUserLogged() == null){
       this.router.navigate(['']);
     }
+
   }
+
 }

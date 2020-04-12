@@ -1,0 +1,24 @@
+<div class="form-group">
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar por nome do paciente</mat-label>
+    <input matInput type="text" class="searchInput" [(ngModel)]="searchTerm" />
+  </mat-form-field>
+</div>
+
+<mat-card class="user-card" *ngFor="let patient of patients | patientFilter:searchTerm">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{ patient.firstName }}</mat-card-title>
+    <mat-card-subtitle>{{ patient.email }} | {{ patient.telephoneNumber }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Observações:
+      {{ patient.patient.note }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button> Nova avaliação </button>
+    <button mat-button> Consultar histórico </button>
+  </mat-card-actions>
+</mat-card>

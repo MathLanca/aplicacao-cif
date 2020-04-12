@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   callRegisterComponent = false;
   loading = false
-
+                    
   @Input() person: Person = <Person>{};
   @Output() personOut: EventEmitter<Person> = new EventEmitter();
   constructor(private authService: AuthService, private router: Router, private snackbar: MatSnackBar, private sessionService: SessionService) { }
