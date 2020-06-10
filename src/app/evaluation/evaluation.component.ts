@@ -1,20 +1,15 @@
 import { Component, OnInit, ViewChild, Input, Renderer2, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray, FormGroupDirective, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { QuestionService } from '../service/question.service';
 import { Question } from '../interfaces/question';
 import { Questions } from '../interfaces/questions';
 import { Observable } from 'rxjs';
-import { MatExpansionPanel, MatRadioGroup, throwToolbarMixedModesError, MatSnackBar } from '@angular/material';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { Patient } from '../interfaces/patient';
+import { MatExpansionPanel, MatSnackBar } from '@angular/material';
 import { Person } from '../interfaces/person';
 import { PatientListService } from '../service/patient-list.service';
 import { Evaluation } from '../interfaces/evaluation';
 import { Answer } from '../interfaces/answer';
-import { Gerador } from './gerador';
-import * as jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
 import { EvaluationService } from '../service/evaluation.service';
 declare var xepOnline: any;
 @Component({
@@ -52,7 +47,6 @@ export class EvaluationComponent implements OnInit {
   @Input() evaluation: Evaluation = <Evaluation>{};
   @Input() answer: Answer = <Answer>{};
 
-  private answers: Answer[] = [];
 
   @ViewChild("factorPanel") factorPanel: MatExpansionPanel;
   @ViewChild("aNpPanel") aNpPanel: MatExpansionPanel;
@@ -65,7 +59,6 @@ export class EvaluationComponent implements OnInit {
   questionList: Questions;
 
   constructor(
-    private renderer: Renderer2,
     private route: Router,
     private formBuilder: FormBuilder,
     private questionService: QuestionService,
@@ -120,9 +113,9 @@ export class EvaluationComponent implements OnInit {
         console.log("generalGrade setado")
         fg.controls.generalGrade.get([index]).setValidators(Validators.required);
       }
-      else if (fg.controls.cGrade != undefined) {
-        fg.controls.cGrade.get([index]).setValidators(Validators.required);
-        fg.controls.pGrade.get([index]).setValidators(Validators.required);
+      else if (fg.controls.capacityGrade != undefined) {
+        fg.controls.capacityGrade.get([index]).setValidators(Validators.required);
+        fg.controls.performanceGrade.get([index]).setValidators(Validators.required);
       }
       else {
         fg.controls.locationGrade.get([index]).setValidators(Validators.required);
@@ -139,14 +132,14 @@ export class EvaluationComponent implements OnInit {
 
   newEvaluation(){
     this.evaluationService.newEvaluation(this.evaluation).subscribe(
-      data =>{
+      () =>{
       this.snackbar.open('Avaliação salva com sucesso!', 'Accept', {
         duration: 2000,
         panelClass: ['green-snackbar']
       });
       this.route.navigate(['home']);
     },
-    err =>{
+    () =>{
       this.snackbar.open('Erro ao salvar avaliação!', 'Accept', {
         duration: 2000,
         panelClass: ['green-snackbar']
@@ -185,6 +178,9 @@ export class EvaluationComponent implements OnInit {
     this.invalids = [];
     const list = fg.get('questionId').value;
     for (let i = 0; i < list.length; i++) {
+      if(this.evaluation.answers.find(a => a.questionId == list[i]) != null){
+       break; 
+      }
       let answer: Answer = {
         questionId: fg.get('questionId').value[i],
         infoSource: fg.get('infoSource').value[i],
@@ -194,13 +190,13 @@ export class EvaluationComponent implements OnInit {
           ? null
           : fg.get('generalGrade').value[i],
 
-        pGrade: fg.get('pGrade') == undefined || null
+        performanceGrade: fg.get('performanceGrade') == undefined || null
           ? null
-          : fg.get('pGrade').value[i],
+          : fg.get('performanceGrade').value[i],
 
-        cGrade: fg.get('cGrade') == undefined || null
+        capacityGrade: fg.get('capacityGrade') == undefined || null
           ? null
-          : fg.get('cGrade').value[i],
+          : fg.get('capacityGrade').value[i],
 
         natureGrade: fg.get('natureGrade') == undefined || null
           ? null
@@ -242,10 +238,6 @@ export class EvaluationComponent implements OnInit {
     });
   }
 
-  pdf() {
-    Gerador.geradorPDF(this.evaluation, this.questionList);
-  }
-
   validateForm(fc: FormGroup, array: any[]) {
     console.log(fc.get('infoSource'));
     if (this.invalids.length > 0) {
@@ -273,8 +265,8 @@ export class EvaluationComponent implements OnInit {
       questionId: this.buildQuestionsId(data == null ? null : data.activityAndParticipation),
       infoSource: this.buildInfoSource(data == null ? null : data.activityAndParticipation),
       problemDescription: this.buildProblemDescription(data == null ? null : data.activityAndParticipation),
-      cGrade: this.buildGrade(data == null ? null : data.activityAndParticipation),
-      pGrade: this.buildGrade(data == null ? null : data.activityAndParticipation),
+      capacityGrade: this.buildGrade(data == null ? null : data.activityAndParticipation),
+      performanceGrade: this.buildGrade(data == null ? null : data.activityAndParticipation),
     });
   }
 
@@ -310,7 +302,7 @@ export class EvaluationComponent implements OnInit {
 
   buildInfoSource(questions: Question[]) {
     if (questions != null || questions != undefined) {
-      const values = questions.map((v: Question) => {
+      const values = questions.map(() => {
         new FormControl(this.answer.infoSource, [Validators.required])
       });
       return this.formBuilder.array(values, [Validators.required]);
@@ -320,7 +312,7 @@ export class EvaluationComponent implements OnInit {
 
   buildProblemDescription(questions: Question[]) {
     if (questions != null || questions != undefined) {
-      const values = questions.map((v: Question) => {
+      const values = questions.map(() => {
         new FormControl(this.answer.problemDescription)
       });
       return this.formBuilder.array(values);
@@ -330,7 +322,7 @@ export class EvaluationComponent implements OnInit {
 
   buildGrade(questions: Question[]) {
     if (questions != null || questions != undefined) {
-      const values = questions.map((v: Question) =>
+      const values = questions.map(() =>
         new FormControl(Validators.required)
       );
       return this.formBuilder.array(values, Validators.required);

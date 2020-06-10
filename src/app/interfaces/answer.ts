@@ -5,8 +5,8 @@ export interface Answer {
 
     generalGrade:number;
     
-    cGrade:number;
-    pGrade:number;
+    capacityGrade:string;
+    performanceGrade:string;
 
     locationGrade:number;
     extensionGrade:number;

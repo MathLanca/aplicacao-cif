@@ -196,7 +196,7 @@
 
                     <mat-divider></mat-divider>
 
-                    <div class="general-grade" fxLayoutAlign="end" formArrayName="cGrade">
+                    <div class="general-grade" fxLayoutAlign="end" formArrayName="capacityGrade">
                         <span class="bold-font grade grade-radio">C</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
                             <mat-radio-button color="warn" value="0">0</mat-radio-button>
@@ -223,7 +223,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="general-grade" fxLayoutAlign="end" formArrayName="pGrade">
+                    <div class="general-grade" fxLayoutAlign="end" formArrayName="performanceGrade">
                         <span class="bold-font grade grade-radio">P</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
                             <mat-radio-button color="warn" value="0">0</mat-radio-button>
@@ -599,8 +599,8 @@
             <div *ngFor="let question of activityAndParticipation ">
                 <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
                     <h5 class="p-2">{{ question.code }} - {{ question.title }}</h5>
-                    <p class="p-2">C: {{ getAnswerGrade(question).cGrade }}</p>
-                    <p class="p-2">P: {{ getAnswerGrade(question).pGrade }}</p>
+                    <p class="p-2">C: {{ getAnswerGrade(question).capacityGrade }}</p>
+                    <p class="p-2">P: {{ getAnswerGrade(question).performanceGrade }}</p>
                 </div>
             </div>
             <hr>
