@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Person } from '../interfaces/person';
 import { Address } from '../interfaces/address';
+import { ProfessionalData } from '../interfaces/professionalData';
 import { CepService } from '../service/cep.service';
 import { MatSnackBar, MatStepper } from '@angular/material';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -29,8 +30,31 @@ export class RegisterComponent implements OnInit {
   registered = false;
   personForm: FormGroup;
   addressForm: FormGroup;
+  professionalForm: FormGroup;
   states: any = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'TO'];
   Roles: any = ['Admin', 'Paciente', 'Terapeuta'];
+  occupations: any[] = [ 
+    'Assistência Social', 
+    'Biologia', 
+    'Biomedicina',
+    'Educação Física',
+    'Enfermagem',
+    'Farmácia',
+    'Fisioterapia',
+    'Fonoaudiologia',
+    'Medicina',
+    'Medicina Veterinária',
+    'Nutrição',
+    'Odontologia',
+    'Psicologia',
+    'Terapia Ocupacional'
+  ];
+  testt = 7;
+  
+  object: {[key: string]: string} = {"Medicina": 'CRM', "Enfermagem": 'COREN'};
+
+  
+  
 
   genders: Gender[] = [
     { value: 'F', viewValue: 'Feminino' },
@@ -38,17 +62,21 @@ export class RegisterComponent implements OnInit {
     { value: 'O', viewValue: 'Não informar' }
   ];
 
+  
+
   constructor(private cepService: CepService, private router: Router,
     private sessionService: SessionService, private authService: AuthService,
     private registerService: RegisterService, private snackbar: MatSnackBar,
     private _adapter: DateAdapter<any>) {
     this.personForm = this.createPersonForm();
     this.addressForm = this.createAddressForm();
+    this.professionalForm = this.createProfessionalForm();
   }
 
 
   @Input() person: Person = <Person>{};
   @Input() address: Address = <Address>{};
+  @Input() professionalData: ProfessionalData = <ProfessionalData>{};
   @ViewChild('cpf') cpfElement: ElementRef;
   @ViewChild('email') emailElement: ElementRef;
   @ViewChild('stepper') private myStepper: MatStepper;
@@ -113,6 +141,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  createProfessionalForm() {
+    return new FormGroup({
+      'occupation': new FormControl(this.person.occupation, [Validators.required]),
+      'professionalID': new FormControl(this.person.professionalID, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      'workPlace': new FormControl(this.person.workPlace, [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
+    });
+  }
+
   ngOnInit() {
     if (this.sessionService.getUserLogged() != null) {
       return this.router.navigate(['home']);
@@ -127,6 +163,7 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this.person = this.personForm.value;
     this.address = this.addressForm.value;
+    this.professionalData = this.professionalForm.value;
     this.person.address = this.address;
     this.person.active = true;
     this.person.birthDate = new Date(this.person.birthDate).toISOString();

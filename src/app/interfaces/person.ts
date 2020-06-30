@@ -15,4 +15,7 @@ export interface Person {
     address: Address;
     patient: Patient;
     active: Boolean;
+    occupation: String;
+    professionalID: String;
+    workPlace:String;
 }
