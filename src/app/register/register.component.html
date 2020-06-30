@@ -1,10 +1,13 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header>
-            <mat-card-title>Cadastro Aplicação CIF</mat-card-title>
+            <mat-card-title></mat-card-title>
+            <div *ngFor="let item of object | keyvalue">
+                {{item.key}}:{{item.value}}
+              </div>
         </mat-card-header>
 
-        <mat-horizontal-stepper linear="true" #stepper>
+        <mat-horizontal-stepper linear="false" #stepper>
             <mat-step [stepControl]="personForm">
                 <form [formGroup]="personForm" autocomplete="off">
                     <ng-template matStepLabel>Dados Pessoais</ng-template>
@@ -46,7 +49,8 @@
 
                     <mat-form-field>
                         <mat-label>Celular</mat-label>
-                        <input mask="(00)00000-0000" maxlength="14" matTooltip="Com DDD" matTooltipPosition="after" matInput placeholder="Celular" formControlName="telephoneNumber" required> </mat-form-field>
+                        <input mask="(00)00000-0000" maxlength="14" matTooltip="Com DDD" matTooltipPosition="after" matInput placeholder="Celular" formControlName="telephoneNumber" required> 
+                    </mat-form-field>
                     <mat-form-field>
                         <mat-label>Gênero</mat-label>
                         <mat-select formControlName="sex">
@@ -73,8 +77,8 @@
                 </form>
             </mat-step>
             <mat-step [stepControl]="addressForm">
-                <form [formGroup]="addressForm" autocomplete="off" (ngSubmit)="onSubmit()">
-                    <ng-template matStepLabel>Dados Residênciais</ng-template>
+                <form [formGroup]="addressForm" autocomplete="off">
+                    <ng-template matStepLabel>Dados Residenciais</ng-template>
                     <mat-form-field>
                         <mat-label>CEP</mat-label>
                         <input mask="00000-000" matInput placeholder="CEP" (change)="searchCEP()" formControlName="postalCode" required>
@@ -109,6 +113,40 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <div class="nextStep">
+                        <button mat-button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="float-left">
+                            Cancelar
+                        </button>
+                        <button mat-button mat-button matStepperNext mat-stroked-button type="submit" color="warn" class="float-right">
+                            Próximo
+                        </button>
+                    </div>
+                </form>
+            </mat-step>
+    
+            <mat-step [stepControl]="professionalForm">
+                <form [formGroup]="professionalForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                    <ng-template matStepLabel>Dados Profissionais</ng-template>
+                    <mat-form-field>
+                        <mat-label>Área de atuação</mat-label>
+                        <mat-select formControlName="occupation" ng-model="filled">
+                            <mat-option *ngFor="let occupation of occupations" [value]="occupation">
+                            {{occupation}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field ng-model="button" ng-disabled="filled">
+                        <mat-label>Identificação profissional</mat-label>
+                        <input matInput placeholder="Identificação profissional" formControlName="professionalID" required>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Lugar de trabalho</mat-label>
+                        <input matInput placeholder="Lugar de trabalho" formControlName="workPlace" required>
+                    </mat-form-field>
+        
+                    
                     <div class="nextStep">
                         <button *ngIf="!loading" mat-button (click)="stepper.reset()" mat-stroked-button color="warn" class="float-left">
                             Limpar
