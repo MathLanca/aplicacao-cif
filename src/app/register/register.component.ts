@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, Input, ViewChild, ElementRef, EventEmitter  } from '@angular/core';
+import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { Person } from '../interfaces/person';
 import { Address } from '../interfaces/address';
 import { ProfessionalData } from '../interfaces/professionalData';
@@ -49,9 +49,24 @@ export class RegisterComponent implements OnInit {
     'Psicologia',
     'Terapia Ocupacional'
   ];
-  testt = 7;
+  regionalID:String = "Identificação profissional";
   
-  object: {[key: string]: string} = {"Medicina": 'CRM', "Enfermagem": 'COREN'};
+  object: {[key: string]: string} = {
+  "Assistência Social":'CRESS',   
+  "Biologia":'CRBio', 
+  "Biomedicina":"CRBM", 
+  "Educação Física": "CREF", 
+  "Enfermagem": 'COREN', 
+  'Farmácia':'CRF',
+  'Fisioterapia':'CREFITO',
+  'Fonoaudiologia':'CREFONO',
+  "Medicina": 'CRM', 
+  'Medicina Veterinária':'CRMV',
+  'Nutrição':'CRN',
+  'Odontologia':'CRO',
+  'Psicologia':'CRP',
+  'Terapia Ocupacional':'COFFITO'
+};
 
   
   
@@ -144,7 +159,7 @@ export class RegisterComponent implements OnInit {
   createProfessionalForm() {
     return new FormGroup({
       'occupation': new FormControl(this.person.occupation, [Validators.required]),
-      'professionalID': new FormControl(this.person.professionalID, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      'professionalID': new FormControl({value: this.person.professionalID, disabled: true} , [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
       'workPlace': new FormControl(this.person.workPlace, [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
     });
   }
@@ -153,6 +168,16 @@ export class RegisterComponent implements OnInit {
     if (this.sessionService.getUserLogged() != null) {
       return this.router.navigate(['home']);
     }
+    this.onChanges();
+  }
+
+  onChanges(): void{
+    this.professionalForm.get('occupation').valueChanges.subscribe(val => {
+      if (this.professionalForm.get('occupation').value != null){
+        this.professionalForm.get('professionalID').enable();
+        this.regionalID = this.object[this.professionalForm.get('occupation').value];
+      }
+    });
   }
 
   goBack2Login() {
