@@ -1,10 +1,7 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header>
-            <mat-card-title></mat-card-title>
-            <div *ngFor="let item of object | keyvalue">
-                {{item.key}}:{{item.value}}
-              </div>
+            <mat-card-title>Cadastro de profissional</mat-card-title>
         </mat-card-header>
 
         <mat-horizontal-stepper linear="false" #stepper>
@@ -136,9 +133,9 @@
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field ng-model="button" ng-disabled="filled">
-                        <mat-label>Identificação profissional</mat-label>
-                        <input matInput placeholder="Identificação profissional" formControlName="professionalID" required>
+                    <mat-form-field>
+                        <mat-label>{{regionalID}}</mat-label>
+                        <input disabled matInput placeholder="{{regionalID}}" formControlName="professionalID" required>
                     </mat-form-field>
 
                     <mat-form-field>
