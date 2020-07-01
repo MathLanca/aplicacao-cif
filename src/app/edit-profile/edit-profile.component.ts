@@ -11,6 +11,7 @@ import { EditProfileService } from '../service/edit-profile.service';
 import { RemoveAccountService } from '../service/remove-account.service';
 import { Router } from '@angular/router';
 import { OpenModalService } from '../shared/modal-dialog/open-modal-service.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -33,6 +34,9 @@ export class EditProfileComponent implements OnInit {
   patient = null;
   states: any = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO'];
   Roles: any = ['Admin', 'Paciente', 'Terapeuta'];
+  role:String = this.application.role;
+  blockProfileEdition:boolean;
+
 
   genders: Gender[] = [
     { value: 'F', viewValue: 'Feminino' },
@@ -49,11 +53,9 @@ export class EditProfileComponent implements OnInit {
     private session:SessionService,
     private router: Router,
     private editProfileService: EditProfileService,
-    private openModalService:OpenModalService
+    private openModalService:OpenModalService,
+    private application:AppComponent
     ) { 
-    this.personForm = this.createPersonForm();
-    this.addressForm = this.createAddressForm();
-
   }
 
   @Input() person:Person = <Person>{};
@@ -95,11 +97,17 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(){
+    if(this.role == 'PATIENT'){
+      this.blockProfileEdition = true;
+    }
+    console.log(this.role);
     this._authservice.getUserData(this.session.userId)
           .subscribe(data => {
             this.user = data;
             this.loaded = true;
           });
+    this.personForm = this.createPersonForm();
+    this.addressForm = this.createAddressForm();
   }
 
   createPersonForm() {
@@ -107,12 +115,12 @@ export class EditProfileComponent implements OnInit {
       'email': new FormControl(this.person.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.person.password, [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
       'confirmPass': new FormControl(this.person.password, [Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
-      'firstName': new FormControl(this.person.firstName, [Validators.required]),
-      'lastName': new FormControl(this.person.lastName, [Validators.required]),
-      'cpf': new FormControl(this.person.lastName, [Validators.required, Validators.pattern('[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}')]),
-      'sex': new FormControl(this.person.sex, [Validators.required]),
+      'firstName': new FormControl({value:this.person.firstName, disabled:this.blockProfileEdition}, [Validators.required]),
+      'lastName': new FormControl({value:this.person.lastName, disabled:this.blockProfileEdition}, [Validators.required]),
+      'cpf': new FormControl({value:this.person.lastName, disabled:this.blockProfileEdition}, [Validators.required, Validators.pattern('[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}')]),
+      'sex': new FormControl({value:this.person.sex, disabled:this.blockProfileEdition}, [Validators.required]),
       'telephoneNumber': new FormControl(this.person.telephoneNumber, [Validators.required, Validators.maxLength(14)]),
-      'birthDate': new FormControl(this.person.birthDate, [Validators.required]),
+      'birthDate': new FormControl({value:this.person.birthDate, disabled:this.blockProfileEdition}, [Validators.required]),
       'patient': new FormGroup({
         'therapistID': new FormControl(''),
         'note': new FormControl('')

@@ -31,7 +31,7 @@
             <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><mat-icon class="person-icon">person</mat-icon></button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="viewProfile()"><mat-icon>person_outline</mat-icon> Editar perfil </button>
-                <button mat-menu-item (click)="deleteTherapist()"><mat-icon>delete_forever</mat-icon> Excluir perfil </button>
+                <button mat-menu-item (click)="deleteTherapist()" *ngIf="role == 'THERAPIST'"><mat-icon>delete_forever</mat-icon> Excluir perfil </button>
                 <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Sair</button>
             </mat-menu>
         </mat-toolbar>

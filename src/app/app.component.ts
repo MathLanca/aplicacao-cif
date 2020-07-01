@@ -19,7 +19,7 @@ import {Location} from '@angular/common';
 })
 
 export class AppComponent implements OnChanges {
-  title = 'aplicacao-cif-mackenzie';
+  title = 'Aplicação Core Set CIF geriátrico';
   public pageTitle: string;
   public pageTitlePT: string;
 
