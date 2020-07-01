@@ -1,5 +1,6 @@
 import { Address } from './address';
 import { Patient } from './patient';
+import { ProfessionalData } from './professionalData';
 
 export interface Person {
     id: string;
@@ -15,7 +16,5 @@ export interface Person {
     address: Address;
     patient: Patient;
     active: Boolean;
-    occupation: String;
-    professionalID: String;
-    workPlace:String;
+    professionalData: ProfessionalData;
 }

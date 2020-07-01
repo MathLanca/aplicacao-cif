@@ -1,3 +1,5 @@
 export interface ProfessionalData {
-    occupationArea: string;
+    occupation : string;
+    professionalID : string;
+    workPlace : string;
 }

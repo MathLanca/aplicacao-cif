@@ -158,9 +158,9 @@ export class RegisterComponent implements OnInit {
 
   createProfessionalForm() {
     return new FormGroup({
-      'occupation': new FormControl(this.person.occupation, [Validators.required]),
-      'professionalID': new FormControl({value: this.person.professionalID, disabled: true} , [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
-      'workPlace': new FormControl(this.person.workPlace, [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
+      'occupation': new FormControl(this.person.professionalData.occupation, [Validators.required]),
+      'professionalID': new FormControl({value: this.person.professionalData.professionalID, disabled: true} , [Validators.required, Validators.minLength(2), Validators.maxLength(255)]),
+      'workPlace': new FormControl(this.person.professionalData.workPlace, [Validators.required, Validators.minLength(2), Validators.maxLength(255)])
     });
   }
 
@@ -187,8 +187,8 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     this.person = this.personForm.value;
-    this.address = this.addressForm.value;
-    this.professionalData = this.professionalForm.value;
+    this.address = this.addressForm.value;  
+    this.professionalData = this.professionalForm.value;  
     this.person.address = this.address;
     this.person.active = true;
     this.person.birthDate = new Date(this.person.birthDate).toISOString();

@@ -121,12 +121,12 @@
                 </form>
             </mat-step>
     
-            <mat-step [stepControl]="professionalForm">
-                <form [formGroup]="professionalForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <mat-step [stepControl]="professionalDataForm">
+                <form [formGroup]="professionalDataForm" autocomplete="off" (ngSubmit)="onSubmit()">
                     <ng-template matStepLabel>Dados Profissionais</ng-template>
                     <mat-form-field>
                         <mat-label>Área de atuação</mat-label>
-                        <mat-select formControlName="occupation" ng-model="filled">
+                        <mat-select formControlName="occupation" ng-model="filled" required>
                             <mat-option *ngFor="let occupation of occupations" [value]="occupation">
                             {{occupation}}
                             </mat-option>
@@ -142,8 +142,7 @@
                         <mat-label>Lugar de trabalho</mat-label>
                         <input matInput placeholder="Lugar de trabalho" formControlName="workPlace" required>
                     </mat-form-field>
-        
-                    
+          
                     <div class="nextStep">
                         <button *ngIf="!loading" mat-button (click)="stepper.reset()" mat-stroked-button color="warn" class="float-left">
                             Limpar
@@ -156,6 +155,7 @@
                             </mat-progress-bar>
                         </section>
                     </div>
+
                 </form>
             </mat-step>
         </mat-horizontal-stepper>
