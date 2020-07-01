@@ -11,3 +11,23 @@ table {
 .spinner {
     margin-top: 30%;
 }
+
+.user-card {
+    max-width: 900px;
+    width: 90%;
+    margin: 1em;
+}
+
+.header-image {
+    background-image: url('https://img.icons8.com/pastel-glyph/2x/person-male.png');
+    background-size: cover;
+}
+
+.item{
+    font-weight: 600;
+}
+
+
+.cardContent{
+    padding: 0.7em;
+}

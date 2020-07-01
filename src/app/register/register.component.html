@@ -1,7 +1,7 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header>
-            <mat-card-title>Cadastro de profissional</mat-card-title>
+            <mat-card-title>Cadastro de aplicação Core Set CIF geriátrico</mat-card-title>
         </mat-card-header>
 
         <mat-horizontal-stepper linear="false" #stepper>
@@ -121,8 +121,8 @@
                 </form>
             </mat-step>
     
-            <mat-step [stepControl]="professionalDataForm">
-                <form [formGroup]="professionalDataForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <mat-step [stepControl]="professionalForm">
+                <form [formGroup]="professionalForm" autocomplete="off" (ngSubmit)="onSubmit()">
                     <ng-template matStepLabel>Dados Profissionais</ng-template>
                     <mat-form-field>
                         <mat-label>Área de atuação</mat-label>
@@ -155,7 +155,7 @@
                             </mat-progress-bar>
                         </section>
                     </div>
-
+                    
                 </form>
             </mat-step>
         </mat-horizontal-stepper>
