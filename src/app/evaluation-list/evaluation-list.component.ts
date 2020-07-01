@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./evaluation-list.component.css']
 })
 export class EvaluationListComponent implements OnInit {
-  public dataSource = [];
-  displayedColumns: string[] = ['therapistId', 'patientName', 'date', 'location', 'view'];
+  public evaluations = [];
   therapistName = localStorage.name;
   public months: {[key: number]: string} = {
     1: "Janeiro",
@@ -35,11 +34,10 @@ export class EvaluationListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dateConversion("2020-05-31T20:15:37.217");
     this.evaluationService.evaluationList()
       .subscribe(
         data => {
-          this.dataSource = data;
+          this.evaluations = data;
           this.loaded = true;
         }, error => {
           this.loaded = true;

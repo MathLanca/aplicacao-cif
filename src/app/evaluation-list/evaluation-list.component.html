@@ -2,7 +2,35 @@
     <mat-spinner></mat-spinner>
 </div>
 
-<table mat-table [dataSource]="dataSource" *ngIf="loaded" class="mat-elevation-z8">
+<div >
+    <mat-card *ngFor="let evaluation of evaluations" class="user-card">
+        <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title>{{ evaluation.patientName}}</mat-card-title>
+        </mat-card-header>
+        
+
+        <mat-card-content class="cardContent">
+            <p> <span class="item"> Profissional responsável: </span> {{ evaluation.therapistName}} </p>
+            <p> <span class="item"> Data da avaliação: </span> {{dateConversion(evaluation.date)}} </p>
+            <p> <span class="item"> Local da avaliação: </span> {{ evaluation.location}} </p>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <button mat-button (click)="redirectToEvaluationDetails(evaluation.id)"> Acessar avaliação </button>
+        </mat-card-actions>
+
+    </mat-card> 
+</div>
+
+
+
+
+
+
+
+
+<!-- <table mat-table [dataSource]="dataSource" *ngIf="loaded" class="mat-elevation-z8">
 
     <ng-container matColumnDef="therapistId">
         <th mat-header-cell *matHeaderCellDef> Terapeuta </th>
@@ -32,4 +60,4 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</table> -->

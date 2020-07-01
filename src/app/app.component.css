@@ -127,3 +127,12 @@ ul.breadcrumb {
     color: #01447e;
     text-decoration: underline;
   }
+
+
+
+/* Cards */
+.card{
+    width:60%;
+    text-align:center;
+    text-transform: uppercase;
+}
