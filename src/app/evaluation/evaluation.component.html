@@ -51,6 +51,9 @@
                     <p>Constituem o ambiente físico, social e de atitudes em que as pessoas vivem e conduzem sua vida.</p>
                     <p class="bold-font">Quanto estes fatores são facilitadores e/ou barreiras na sua vida... </p>
                     <p>Você também pode classificar os fatores ambientais como um facilitador e uma barreira, se aplicável.</p>
+                    <p class="bold-font">Onde:</p>
+                    <p>0 - Não há problema | +1 - Facilitador leve | 1 - Problema ligeiro | +2 - Facilitador moderado | 2 - Problema moderado | 3 - Problema grave</p>
+                    <p>+3 - Facilitador considerável | +4 - Facilitador completo | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável</p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -78,17 +81,17 @@
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="generalGrade">
                         <span class="bold-font grade grade-radio">Geral</span>
                         <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="0.5">+1</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="1.5">+2</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="3.5">+3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">+4</mat-radio-button>
-                            <mat-radio-button color="warn" value="4.5">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="0.5" matTooltip="Facilitador leve" matTooltipPosition="above">+1</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="1.5" matTooltip="Facilitador moderado" matTooltipPosition="above">+2</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="3.5" matTooltip="Facilitador considerável" matTooltipPosition="above">+3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Facilitador completo" matTooltipPosition="above">+4</mat-radio-button>
+                            <mat-radio-button color="warn" value="4.5" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -96,17 +99,17 @@
                                 Geral
                             </mat-label>
                             <mat-select [formControlName]="environmentalFactors.indexOf(factor)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="0.5">+1</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="1.5">+2</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="3.5">+3</mat-option>
-                                <mat-option value="4">+4</mat-option>
-                                <mat-option value="4.5">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="0.5">+1 - Facilitador leve</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="1.5">+2 - Facilitador moderado</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="3.5">+3 - Facilitador considerável</mat-option>
+                                <mat-option value="4">+4 - Facilitador completo</mat-option>
+                                <mat-option value="4.5">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -172,6 +175,9 @@
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p>P = DESEMPENHO EM ...</p>
                     <p>C = CAPACIDADE DE ...</p>
+
+                    <p class="bold-font">Onde:</p>
+                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -199,13 +205,13 @@
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="capacityGrade">
                         <span class="bold-font grade grade-radio">C</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -213,26 +219,26 @@
                                 C
                             </mat-label>
                             <mat-select [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="performanceGrade">
                         <span class="bold-font grade grade-radio">P</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -240,13 +246,13 @@
                                 P
                             </mat-label>
                             <mat-select [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -309,6 +315,8 @@
                 <mat-card-subtitle>
                     <p>As estruturas do corpo são partes anatômicas do corpo, como, orgãos, membros e seus componentes</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
+                    <p class="bold-font">Onde:</p>
+                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -336,13 +344,13 @@
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="locationGrade">
                         <span class="bold-font grade grade-radio">Localização</span>
                         <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -350,26 +358,26 @@
                                 Localização
                             </mat-label>
                             <mat-select [formControlName]="bodyStructures.indexOf(structure)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="natureGrade">
                         <span class="bold-font grade grade-radio">Natureza</span>
                         <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -377,26 +385,26 @@
                                 Natureza
                             </mat-label>
                             <mat-select [formControlName]="bodyStructures.indexOf(structure)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="extensionGrade">
                         <span class="bold-font grade grade-radio">Extensão</span>
                         <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -404,13 +412,13 @@
                                 Extensão
                             </mat-label>
                             <mat-select [formControlName]="bodyStructures.indexOf(structure)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -473,6 +481,8 @@
                 <mat-card-subtitle>
                     <p>Funções fisiológicas dos sistema corporais (incluindo as funções psicológicas)</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
+                    <p class="bold-font">Onde:</p>
+                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -501,13 +511,13 @@
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="generalGrade">
                         <span class="bold-font grade grade-radio">Geral</span>
                         <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9">9</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -515,13 +525,13 @@
                                 Geral
                             </mat-label>
                             <mat-select [formControlName]="bodyFunctions.indexOf(function)" class="grade-select">
-                                <mat-option value="0">0</mat-option>
-                                <mat-option value="1">1</mat-option>
-                                <mat-option value="2">2</mat-option>
-                                <mat-option value="3">3</mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="8">8</mat-option>
-                                <mat-option value="9">9</mat-option>
+                                <mat-option value="0">0 - Não há problema</mat-option>
+                                <mat-option value="1">1 - Problema ligeiro</mat-option>
+                                <mat-option value="2">2 - Problema moderado</mat-option>
+                                <mat-option value="3">3 - Problema grave</mat-option>
+                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -585,7 +595,7 @@
                 <p><span class="bold-font">Terapeuta: </span>{{ evaluation.therapistId }}</p>
                 <p><span class="bold-font">Local: </span>{{ evaluation.location }}</p>
                 <p><span class="bold-font">Data: </span> {{ evaluation.date | date:"dd 'de' MMM 'de' yyyy"}} </p>
-                
+
             </div>
             <hr>
             <h4 matTooltip="{{stepTwo}}">{{stepTwo}}</h4>
