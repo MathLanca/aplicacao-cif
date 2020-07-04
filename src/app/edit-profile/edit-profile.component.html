@@ -65,7 +65,7 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                     <div class="nextStep">
-                        <button *ngIf="!loading" mat-button (click)="cancelUpdate()" mat-stroked-button color="warn" class="float-left">
+                        <button *ngIf="!loading" mat-button routerLink="/" mat-stroked-button color="warn" class="float-left">
                             Cancelar </button>
                         <button mat-button matStepperNext mat-stroked-button type="submit" color="warn" class="float-right">
                             Próximo
@@ -111,7 +111,7 @@
                         </mat-select>
                     </mat-form-field>
                     <div class="nextStep">
-                        <button *ngIf="!loading" mat-button (click)="cancelUpdate()" mat-stroked-button color="warn" class="float-left">
+                        <button *ngIf="!loading" mat-button routerLink="/" mat-stroked-button color="warn" class="float-left">
                             Cancelar
                         </button>
                         <button *ngIf="!loading" mat-button matStepperNext mat-stroked-button type="submit" color="warn" class="float-right">

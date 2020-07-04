@@ -582,13 +582,16 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Revisão</ng-template>
-        <div class="mb-5">
+        <div class="mb-5 flex" *ngIf="!loading">
             <button mat-button mat-stroked-button matStepperPrevious color="warn" class="mx-auto">Voltar</button>
             <button mat-button mat-stroked-button (click)="newEvaluation()" color="warn" class="mx-auto">Salvar</button>
             <button mat-button mat-stroked-button (click)="download()" color="warn" class="mx-auto">Baixar</button>
         </div>
+        <div *ngIf="loading" fxLayoutAlign="center">
+            <mat-spinner></mat-spinner>
+        </div>
         <div id="print" #print>
-            <h1 class="header-title display-5">Avaliação Funcional</h1>
+            <h1 class="header-title display-5">Relatório de Classificação Funcional</h1>
             <hr>
             <div class="first-header">
                 <p><span class="bold-font">Paciente: </span>{{ evaluation.patientId }}</p>

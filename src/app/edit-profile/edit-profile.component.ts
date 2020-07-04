@@ -149,14 +149,19 @@ export class EditProfileComponent implements OnInit {
     this.editProfileService.updateProfile(this.person)
       .subscribe(
         (res: any) => {
+          this.loading = true;
           this.snackbar.open('Dados atualizados!', 'OK', {
             duration: 2000,
             panelClass: ['green-snackbar']
           });
-          this.router.navigate[''];
+          this.router.navigateByUrl('');
         },
         (erro: any) => {
           this.loading = false;
+          this.snackbar.open('Não foi possivel atualizar os dados', 'OK', {
+            duration: 2000,
+            panelClass: ['green-snackbar']
+          });
           console.log(erro);
         }
       )
