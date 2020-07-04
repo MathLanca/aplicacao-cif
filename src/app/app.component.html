@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav *ngIf="isLogged" #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false || openMenu">
+    <mat-sidenav class="sidenav" *ngIf="isLogged" #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false || openMenu">
         <mat-toolbar color="warn">Menu</mat-toolbar>
         <mat-nav-list class="list-menu-side">
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluation()">
