@@ -150,12 +150,15 @@ export class EvaluationComponent implements OnInit {
 
   download(){
     var file = "Avaliação Funcional - " + this.evaluation.patientId;
+    this.newEvaluation();
     return xepOnline.Formatter.Format('print', {render:'download', filename: file});
   }
 
   newEvaluation(){
+    this.loading = true;
     this.evaluationService.newEvaluation(this.evaluation).subscribe(
       () =>{
+      this.loading = false;
       this.snackbar.open('Avaliação salva com sucesso!', 'Accept', {
         duration: 2000,
         panelClass: ['green-snackbar']
@@ -163,6 +166,7 @@ export class EvaluationComponent implements OnInit {
       this.route.navigate(['home']);
     },
     () =>{
+      this.loading = false;
       this.snackbar.open('Erro ao salvar avaliação!', 'Accept', {
         duration: 2000,
         panelClass: ['green-snackbar']

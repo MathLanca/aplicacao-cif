@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
           horizontalPosition: 'center',
         });
         this.loading = false;
-        this.router.navigate[''];
+        this.router.navigateByUrl('');
       },
       err => {
         this.snackBar.open('Houve um erro ao enviar o email!', 'Fechar', {

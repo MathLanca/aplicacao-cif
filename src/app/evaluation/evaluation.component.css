@@ -6,6 +6,10 @@ h3 {
     display: none;
 }
 
+.flex {
+    display: flex;
+}
+
 .mat-stroked-button {
     border: 1px solid currentColor;
     line-height: 35px;
