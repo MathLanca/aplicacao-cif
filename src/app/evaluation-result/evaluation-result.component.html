@@ -11,13 +11,14 @@
     <hr>
     <div class="first-header">
         <p><span class="bold-font">Paciente: </span>{{ evaluation.patientName }}</p>
-        <p><span class="bold-font">Terapeuta: </span>{{ evaluation.therapistName }}</p>
+        <p><span class="bold-font">Profissional responsável: </span>{{ evaluation.therapistName }}</p>
         <p><span class="bold-font">Local: </span>{{ evaluation.location }}</p>
         <p><span class="bold-font">Data: </span>{{dateConversion(evaluation.date)}}</p>
 
     </div>
     <hr>
     <h4 matTooltip="Informações a respeito da avaliação"> </h4>
+
 
     <div *ngFor="let answer of evaluation.answers">
         <div class="border rounded mb-3">
@@ -31,4 +32,11 @@
             <p class="p-2" *ngIf="answer.problemDescription != null ">Detalhes: {{answer.problemDescription}} </p>
         </div>
     </div>
+    <br><br>
+    <div id="rectangle"> </div>
+    <p style="text-align: center; font-weight: bold;"> Assinatura e carimbo do profissional </p>
+    <p style="text-align: center;"> {{ evaluation.therapistName }} </p>
+    <p style="text-align: center;"> {{regionalID}}: {{evaluationTherapistData.professionalData.professionalID}}</p>
+    
+
 </div>
