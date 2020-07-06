@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
   ];
   regionalID:String = "Identificação profissional";
   
-  object: {[key: string]: string} = {
+  public object: {[key: string]: string} = {
   "Assistência Social":'CRESS',   
   "Biologia":'CRBio', 
   "Biomedicina":"CRBM", 

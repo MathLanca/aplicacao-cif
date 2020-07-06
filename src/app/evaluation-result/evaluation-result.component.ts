@@ -4,6 +4,9 @@ import { Answer } from '../interfaces/answer';
 import { Question } from '../interfaces/question';
 import { Questions } from '../interfaces/questions';
 import { QuestionService } from '../service/question.service';
+import { TherapistService } from '../service/therapist.service';
+import { Person } from '../interfaces/person';
+import { RegisterComponent } from '../register/register.component';
 declare var xepOnline: any;
 @Component({
   selector: 'app-evaluation-result',
@@ -27,9 +30,29 @@ export class EvaluationResultComponent implements OnInit {
     10:"Outubro",
     11:"Novembro",
     12:"Dezembro"
-  }
+  };
 
-  constructor(private evaluationService:EvaluationService) { }
+  public object: {[key: string]: string} = {
+    "Assistência Social":'CRESS',   
+    "Biologia":'CRBio', 
+    "Biomedicina":"CRBM", 
+    "Educação Física": "CREF", 
+    "Enfermagem": 'COREN', 
+    'Farmácia':'CRF',
+    'Fisioterapia':'CREFITO',
+    'Fonoaudiologia':'CREFONO',
+    "Medicina": 'CRM', 
+    'Medicina Veterinária':'CRMV',
+    'Nutrição':'CRN',
+    'Odontologia':'CRO',
+    'Psicologia':'CRP',
+    'Terapia Ocupacional':'COFFITO'
+  };
+
+  regionalID:String;
+  evaluationTherapistData:Person;
+
+  constructor(private evaluationService:EvaluationService, private therapistService:TherapistService) { }
 
   ngOnInit(): void {
     this.evaluationId = location.href.substring(location.href.lastIndexOf('/') + 1);
@@ -38,8 +61,19 @@ export class EvaluationResultComponent implements OnInit {
       data => {
         this.evaluation = data;
         this.loaded = true;
+        this.therapistService.retriveEvaluationTherapistData(this.evaluation.therapistId)
+        .subscribe(
+          data => {
+            this.evaluationTherapistData = data;
+            console.log(this.evaluationTherapistData);
+            this.regionalID = this.object[this.evaluationTherapistData.professionalData.occupation];
+            console.log("Ocupacao profissional " + this.regionalID);
+            this.loaded = true;
+          }
+        ); 
       }
-    );  
+    ); 
+    
   }
 
   download(){
