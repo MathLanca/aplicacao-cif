@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
     { value: 'O', viewValue: 'Não informar' }
   ];
 
-  
+  public urlImage: any;
 
   constructor(private cepService: CepService, private router: Router,
     private sessionService: SessionService, private authService: AuthService,
@@ -194,6 +194,7 @@ export class RegisterComponent implements OnInit {
     this.person.professionalData = this.professional;
     this.person.active = true;
     this.person.birthDate = new Date(this.person.birthDate).toISOString();
+    this.person.profilePic = this.urlImage;
     console.log(this.person);
     this.registerService.register(this.person)
       .subscribe(
@@ -244,9 +245,43 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
+
+  selecionarFoto(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      let uploadedImage = event.target.files[0];
+
+
+      if (uploadedImage.type && uploadedImage.type.substring(0, 5) === 'image') {
+        if (uploadedImage.size > 0 && uploadedImage.size < 2097152) {
+          var reader = new FileReader();
+          reader.readAsDataURL(event.target.files[0]);
+
+
+          reader.onload = (event) => {
+            this.urlImage = reader.result;
+            console.log(this.urlImage);
+          }
+        } else {
+          this.snackbar.open('Tamanho da imagem muito grande! (maior que 2Mb)', 'Dismiss', {
+            duration: 4000,
+            panelClass: ['error-snackbar']
+          });
+        }
+      } else {
+        this.snackbar.open('Formato da imagem inválido!', 'Dismiss', {
+          duration: 4000,
+          panelClass: ['error-snackbar']
+        });
+      }
+    }
+  }
+
+
 }
 
 interface Gender {
   value: string;
   viewValue: string;
 }
+
+
