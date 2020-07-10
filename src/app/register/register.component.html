@@ -63,6 +63,9 @@
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
+
+                    <input type='file' (change)="selecionarFoto($event)" id="foto" accept="image/*">
+
                     <div class="nextStep">
                         <button mat-button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="float-left">
                             Cancelar

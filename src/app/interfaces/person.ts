@@ -17,4 +17,5 @@ export interface Person {
     patient: Patient;
     active: Boolean;
     professionalData: ProfessionalData;
+    profilePic:string;
 }

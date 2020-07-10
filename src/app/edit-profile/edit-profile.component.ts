@@ -12,6 +12,7 @@ import { RemoveAccountService } from '../service/remove-account.service';
 import { Router } from '@angular/router';
 import { OpenModalService } from '../shared/modal-dialog/open-modal-service.service';
 import { AppComponent } from '../app.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -43,7 +44,9 @@ export class EditProfileComponent implements OnInit {
     { value: 'M', viewValue: 'Masculino' },
     { value: 'O', viewValue: 'Não informar' }
   ];
- 
+  
+  public imageFile: any;
+
   
   constructor(
     private removeAccount: RemoveAccountService,
@@ -54,7 +57,8 @@ export class EditProfileComponent implements OnInit {
     private router: Router,
     private editProfileService: EditProfileService,
     private openModalService:OpenModalService,
-    private application:AppComponent
+    private application:AppComponent,
+    private sanitizer: DomSanitizer
     ) { 
   }
 
@@ -104,6 +108,9 @@ export class EditProfileComponent implements OnInit {
     this._authservice.getUserData(this.session.userId)
           .subscribe(data => {
             this.user = data;
+            if(this.user.profilePic){
+              this.imageFile = this.user.profilePic;
+            }
             this.loaded = true;
           });
     this.personForm = this.createPersonForm();
@@ -169,6 +176,11 @@ export class EditProfileComponent implements OnInit {
 
   cancelUpdate(){
     this.router.navigate[''];
+  }
+
+  loadImage(user: any) {
+    this.imageFile = this.sanitizer.bypassSecurityTrustUrl(btoa(user.profilePic));
+    console.log(this.imageFile);
   }
 
 }
