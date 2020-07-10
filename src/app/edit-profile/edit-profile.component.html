@@ -6,6 +6,7 @@
     <mat-card class="box">
         <mat-card-header>
             <mat-card-title> Meu perfil </mat-card-title>
+            <img [src]="imageFile" class="img">
         </mat-card-header>
         <mat-horizontal-stepper linear="true" #stepper>
             <mat-step [stepControl]="personForm">
