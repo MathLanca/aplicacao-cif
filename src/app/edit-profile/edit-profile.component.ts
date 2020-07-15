@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { OpenModalService } from '../shared/modal-dialog/open-modal-service.service';
 import { AppComponent } from '../app.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { windowWhen } from 'rxjs/operators';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class EditProfileComponent implements OnInit {
   Roles: any = ['Admin', 'Paciente', 'Terapeuta'];
   role:String = this.application.role;
   blockProfileEdition:boolean;
+  storedBirth;
 
 
   genders: Gender[] = [
@@ -46,7 +48,8 @@ export class EditProfileComponent implements OnInit {
   ];
   
   public imageFile: any;
-
+  public test: any;
+  public urlImage: any;
   
   constructor(
     private removeAccount: RemoveAccountService,
@@ -64,6 +67,69 @@ export class EditProfileComponent implements OnInit {
 
   @Input() person:Person = <Person>{};
   @Input() address:Address = <Address>{};
+
+  selecionarFoto(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      let uploadedImage = event.target.files[0];
+
+
+      if (uploadedImage.type && uploadedImage.type.substring(0, 5) === 'image') {
+        if (uploadedImage.size > 0 && uploadedImage.size < 2097152) {
+          var reader = new FileReader();
+          reader.readAsDataURL(event.target.files[0]);
+
+
+          reader.onload = (event) => {
+            this.urlImage = reader.result;
+            console.log(this.urlImage);
+            const data = {
+              text: 'Confirma alteração da foto de cadastro?',
+              title: 'Alteração de foto cadastral',
+              buttonYes: 'Sim',
+              buttonNo: 'Não'
+            }
+            this.openModalService.openDialog(data).subscribe(res=>{
+              if(res){
+                console.log("alteração da foto de perfil solicitada");
+                this.loading = true;
+                this.person = this.personForm.value;
+                this.address = this.addressForm.value;
+                this.person.address = this.address;
+                this.person.patient = this.patient;
+                // this.person.birthDate = new Date(this.person.birthDate).toISOString();
+                this.person.birthDate = this.storedBirth;
+                this.person.profilePic = this.urlImage;
+                console.log("data de nascimento:" + this.person.birthDate);
+                console.log(this.person);
+                this.editProfileService.updateProfile(this.person)
+                              .subscribe(
+                    (res: any) => {
+                      location.reload();
+                      this.snackbar.open('Foto alterada', 'OK ', {
+                        duration: 2000,
+                      });
+              
+                    }
+                  );
+              }else{
+                console.log('Não foi possível realizar esta ação');
+              }
+            })
+          }
+        } else {
+          this.snackbar.open('Tamanho da imagem muito grande! (maior que 2Mb)', 'Dismiss', {
+            duration: 4000,
+            panelClass: ['error-snackbar']
+          });
+        }
+      } else {
+        this.snackbar.open('Formato da imagem inválido!', 'Dismiss', {
+          duration: 4000,
+          panelClass: ['error-snackbar']
+        });
+      }
+    }
+  }
 
   searchCEP() {
     this.cepService.searchCEP(this.addressForm.controls.postalCode.value)
@@ -100,6 +166,19 @@ export class EditProfileComponent implements OnInit {
     this.addressForm.controls['state'].setValue(cep.uf);
   }
 
+  onChanges(): void{
+    this.personForm.get('email').valueChanges.subscribe(val => {
+      this.person = this.personForm.value;
+      // this.address = this.addressForm.value;
+      // this.person.address = this.address;
+      // this.person.patient = this.patient;
+      // this.person.birthDate = new Date(this.person.birthDate).toISOString();
+      // this.person.profilePic = this.urlImage;
+      // console.log("data de nascimento:" + this.person.birthDate);
+      console.log(this.person);
+    });
+  }
+
   ngOnInit(){
     if(this.role == 'PATIENT'){
       this.blockProfileEdition = true;
@@ -108,6 +187,7 @@ export class EditProfileComponent implements OnInit {
     this._authservice.getUserData(this.session.userId)
           .subscribe(data => {
             this.user = data;
+            this.storedBirth = this.user.birthDate;
             if(this.user.profilePic){
               this.imageFile = this.user.profilePic;
             }
@@ -115,6 +195,7 @@ export class EditProfileComponent implements OnInit {
           });
     this.personForm = this.createPersonForm();
     this.addressForm = this.createAddressForm();
+    this.onChanges();
   }
 
   createPersonForm() {
@@ -152,7 +233,11 @@ export class EditProfileComponent implements OnInit {
     this.address = this.addressForm.value;
     this.person.address = this.address;
     this.person.patient = this.patient;
-    this.person.birthDate = new Date(this.person.birthDate).toISOString();
+    // this.person.birthDate = new Date(this.person.birthDate).toISOString();
+    this.person.birthDate = this.storedBirth;
+    this.person.profilePic = this.urlImage;
+    console.log("data de nascimento:" + this.person.birthDate);
+    console.log(this.person);
     this.editProfileService.updateProfile(this.person)
       .subscribe(
         (res: any) => {

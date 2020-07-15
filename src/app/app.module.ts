@@ -113,7 +113,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
   providers: [
     SessionService,
     MatDatepickerModule,
-    OpenModalService
+    OpenModalService,
+    EditProfileComponent
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

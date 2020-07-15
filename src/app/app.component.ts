@@ -10,6 +10,8 @@ import { ThrowStmt } from '@angular/compiler';
 import { OpenModalService } from './shared/modal-dialog/open-modal-service.service';
 import { RemoveAccountService } from './service/remove-account.service';
 import {Location} from '@angular/common';
+import { AuthService } from './service/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -28,6 +30,9 @@ export class AppComponent implements OnChanges {
   public role: string;
   public isLogged: boolean;
   public openMenu: boolean;
+
+  public user;
+  public imageFile:string;
   
   constructor(
     iconRegistry: MatIconRegistry, 
@@ -39,7 +44,8 @@ export class AppComponent implements OnChanges {
     private removeAccount: RemoveAccountService,
     private snackbar:MatSnackBar,
     private session:SessionService,
-    private location:Location
+    private location:Location,
+    private _authservice:AuthService
     ) {
     iconRegistry.addSvgIcon(
       'mack_white',
@@ -96,8 +102,17 @@ export class AppComponent implements OnChanges {
     if (this.sessionService.getUserLogged() == null) {
       return this.route.navigate(['']);
     }
-    
-  }
+    this._authservice.getUserData(this.session.userId)
+      .subscribe(data => {
+        this.user = data;
+        if(this.user.profilePic){
+          this.imageFile = this.user.profilePic;
+        }
+        else {
+          this.imageFile = "https://img.icons8.com/pastel-glyph/2x/person-male.png;";
+        }
+      });
+    }
 
 
   openSideMenu(){
