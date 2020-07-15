@@ -137,3 +137,11 @@ ul.breadcrumb {
     text-transform: uppercase;
 }
 
+/* Profile pic styles */
+#userPicIcon{
+    border-radius: 50%;
+    height:50px;
+    width: 50px;
+}
+
+

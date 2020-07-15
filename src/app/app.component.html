@@ -28,7 +28,7 @@
             </div>
             <span class="spacer"></span>
             <span *ngIf="greetings != null && isLogged" class="greeting-span">{{ greetings }}</span>
-            <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><mat-icon class="person-icon">person</mat-icon></button>
+            <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><img [src]="imageFile" id="userPicIcon"></button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="viewProfile()"><mat-icon>person_outline</mat-icon> Editar perfil </button>
                 <button mat-menu-item (click)="deleteTherapist()" *ngIf="role == 'THERAPIST'"><mat-icon>delete_forever</mat-icon> Excluir perfil </button>
