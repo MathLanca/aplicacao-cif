@@ -5,9 +5,16 @@
 <div class="login-wrapper" fxLayout="row" *ngIf="loaded" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header>
-            <mat-card-title> Meu perfil </mat-card-title>
-            <img [src]="imageFile" class="img">
+            <mat-card-title> Meu cadastro </mat-card-title>
+            <img [src]="imageFile" id="userPicEditProfile">
+                        
+            <label for="foto" style="width:50%;">
+                <span id="changeImage" aria-hidden="true">Atualizar foto</span>
+                <input type='file' id="foto" style="display:none" (change)="selecionarFoto($event)" accept="image/*">
+            </label>
+
         </mat-card-header>
+        
         <mat-horizontal-stepper linear="true" #stepper>
             <mat-step [stepControl]="personForm">
                 <form [formGroup]="personForm">
@@ -31,7 +38,7 @@
 
                     <mat-form-field>
                         <mat-label>Senha</mat-label>
-                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="**********" type="password" formControlName="password" required>
+                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="**********" type="password" formControlName="password" [ngModel]="user.password" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
                             <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
@@ -39,7 +46,7 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Confirmar Senha</mat-label>
-                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="Senha" (change)="validatePass()" placeholder="**********" type="password" formControlName="confirmPass" required>
+                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="Senha" (change)="validatePass()" placeholder="**********" type="password" formControlName="confirmPass" [ngModel]="user.password" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
                             <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>

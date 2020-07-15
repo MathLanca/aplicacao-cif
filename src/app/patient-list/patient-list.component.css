@@ -9,7 +9,7 @@
 }
 
 .header-image {
-    background-image: url('https://img.icons8.com/pastel-glyph/2x/person-male.png');
+    /* background-image: url('https://img.icons8.com/pastel-glyph/2x/person-male.png'); */
     background-size: cover;
 }
 
@@ -33,4 +33,18 @@ mat-form-field {
 
 .spinner {
     margin-top: 30%;
+}
+
+.patient-card {
+    max-width: 450px;
+    margin-bottom:2em;
+  }
+  
+#patient-image{
+    max-width:390px;
+}
+
+#subtitle{
+    word-wrap: break-word;
+    overflow: hidden;
 }
