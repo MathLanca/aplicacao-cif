@@ -26,6 +26,7 @@ export class EvaluationListComponent implements OnInit {
     11:"Novembro",
     12:"Dezembro"
   }
+  noneEvaluations: boolean;
 
   
   constructor(private evaluationService:EvaluationService, private route:Router) { }
@@ -34,11 +35,16 @@ export class EvaluationListComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
     this.evaluationService.evaluationList()
       .subscribe(
         data => {
           this.evaluations = data;
           this.loaded = true;
+          console.log(this.evaluations);
+          if(this.evaluations.length == 0){
+            this.noneEvaluations = true;
+          }
         }, error => {
           this.loaded = true;
         }
@@ -47,6 +53,10 @@ export class EvaluationListComponent implements OnInit {
 
   redirectToEvaluationDetails(id) {
     this.route.navigate(['evaluation-details',id]);
+  }
+
+  redirectToEvaluation() {
+    this.route.navigate(['evaluation']);
   }
 
   dateConversion(date:string){

@@ -30,9 +30,10 @@ export class AppComponent implements OnChanges {
   public role: string;
   public isLogged: boolean;
   public openMenu: boolean;
+  element: HTMLImageElement;
+  profilePicture;
 
   public user;
-  public imageFile:string;
   
   constructor(
     iconRegistry: MatIconRegistry, 
@@ -73,6 +74,8 @@ export class AppComponent implements OnChanges {
             return this.pageTitlePT = 'Nova Avaliação';
           case("evaluation-list"): 
             return this.pageTitlePT = 'Consulta avaliação';
+          case("patient-evaluations"): 
+            return this.pageTitlePT = 'Avaliações de paciente';
           case("register"): 
             return this.pageTitlePT = 'Cadastro';
           case("home"):
@@ -105,12 +108,12 @@ export class AppComponent implements OnChanges {
     this._authservice.getUserData(this.session.userId)
       .subscribe(data => {
         this.user = data;
-        if(this.user.profilePic){
-          this.imageFile = this.user.profilePic;
+        if(this.user.profilePic == null){
+          this.profilePicture = "../assets/images/profile_icon.png"
+        } else {
+          this.profilePicture = this.user.profilePic;
         }
-        else {
-          this.imageFile = "https://img.icons8.com/pastel-glyph/2x/person-male.png;";
-        }
+        
       });
     }
 
@@ -174,6 +177,10 @@ export class AppComponent implements OnChanges {
 
   redirectToPatientList(){
     this.route.navigate(['patientList']);
+  }
+
+  redirectToPatientEvaluationList(){
+    this.route.navigate(['patient-evaluations']);
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

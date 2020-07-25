@@ -1,0 +1,14 @@
+.alert{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;;
+    margin: auto;
+    max-width: 500px;
+    padding:1.1em;
+    height:75px;
+}
+
+.user-card{
+    max-width: 60%;
+    margin:1.1em;
+}

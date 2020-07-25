@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
     if(this.session.getUserLogged() == null){
       this.router.navigate(['']);
     }else if(localStorage.getItem('role') == 'PATIENT'){
-      this.router.navigate(['evaluations'])
+      this.router.navigate(['patient-evaluations'])
+    } else if(localStorage.getItem('role') == 'THERAPIST'){
+      this.router.navigate(['evaluation-list'])
     }
   }
 }

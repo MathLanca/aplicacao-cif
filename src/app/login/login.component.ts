@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           this.personOut.emit(this.person);
           if(res.patient != null){
             localStorage.setItem('role','PATIENT')
-            this.router.navigate(['evaluations']);
+            this.router.navigate(['patient-evaluations']);
           }else{
             localStorage.setItem('role','THERAPIST')
             this.router.navigate(['home']);

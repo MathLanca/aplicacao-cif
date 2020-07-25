@@ -1,7 +1,7 @@
 <div *ngIf="!loaded" class="spinner" fxLayoutAlign="center">
     <mat-spinner></mat-spinner>
 </div>
-<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="false" #stepper>
+<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="true" #stepper>
     <mat-step fxLayoutAlign="center" [stepControl]="ieFormGroup">
         <form [formGroup]="ieFormGroup" autocomplete="off">
             <ng-template matStepLabel>
@@ -601,6 +601,19 @@
 
             </div>
             <hr>
+            <table>
+                <tr>
+                    <td> Teste </td>
+                    <td> 
+                        <div style="background-color:red; width:50px;">
+                            
+                        </div> 
+                    <div>
+
+                    </div>
+                    </td>
+                </tr>
+            </table>
             <h4 matTooltip="{{stepTwo}}">{{stepTwo}}</h4>
             <div *ngFor="let question of environmentalFactors">
                 <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">

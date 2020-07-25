@@ -3,10 +3,12 @@
 </div>
 
 <div>
-    <h3 *ngIf="noneEvaluations == true" id="warningEvaluation">Você ainda não realizou nenhuma avaliação</h3>
-    <mat-card *ngFor="let evaluation of evaluations" class="user-card">
+    <div *ngIf="noneEvaluations == true" class="alert alert-danger" role="alert">
+        Paciente ainda não possui avaliações
+    </div>
+    <mat-card *ngFor="let evaluation of patientEvaluations" class="user-card">
         <mat-card-header>
-            <mat-card-title>{{ evaluation.patientName}}</mat-card-title>
+            <mat-card-title>Avaliação funcional</mat-card-title>
         </mat-card-header>
         
 
@@ -22,6 +24,3 @@
 
     </mat-card> 
 </div>
-
-
-

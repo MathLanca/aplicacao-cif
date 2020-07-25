@@ -48,3 +48,13 @@ mat-form-field {
     word-wrap: break-word;
     overflow: hidden;
 }
+
+.card-obs{
+    padding-left:4em;
+}
+
+/* Profile pic styles */
+#profile{
+    height:50px;
+    width: 50px;
+}
