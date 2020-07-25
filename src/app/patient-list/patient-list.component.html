@@ -13,22 +13,21 @@
 
     <mat-card class="patient-card" *ngFor="let patient of patients | patientFilter:searchTerm">
         <mat-card-header>
-            <div mat-card-avatar class="patient-header-image"  style="background-image: url({{patient.profilePic}});background-size: cover;"></div>
+            <div mat-card-avatar class="patient-header-image"><img id="profile" class="rounded-circle" [attr.src]="patient.profilePic"/></div>
             <mat-card-title>{{ patient.firstName }}</mat-card-title>
             <mat-card-subtitle id="subtitle">{{ patient.email }} | {{ patient.cpf | mask: '000.000.000-00' }}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image *ngIf="patient.profilePic != ''" src="{{patient.profilePic}}" alt="Foto do paciente" id="patient-image">
-          <img mat-card-image *ngIf="patient.profilePic == null" src="https://img.icons8.com/pastel-glyph/2x/person-male.png" alt="Foto do paciente" id="patient-image">
-          
+    
+           
           <mat-card-content>
-            <p>
+            <span class="card-obs">
                 Observações: {{ patient.patient.note }}
-            </p>
+            </span>
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-button (click)="deletePatient(patient.id)"> Excluir Paciente </button>
             <button mat-button (click)="newEvaluation(patient)"> Nova avaliação </button>
-            <button mat-button> Consultar histórico </button>
+            <button mat-button (click)="redirectToPatientEvaluations(patient.id)"> Consultar histórico </button>
         </mat-card-actions>
     </mat-card>
 </div>

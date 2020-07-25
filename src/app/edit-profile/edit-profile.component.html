@@ -6,9 +6,9 @@
     <mat-card class="box">
         <mat-card-header>
             <mat-card-title> Meu cadastro </mat-card-title>
-            <img [src]="imageFile" id="userPicEditProfile">
-                        
+                      
             <label for="foto" style="width:50%;">
+                <img [attr.src]="profilePicture" class="imagePreview"/>
                 <span id="changeImage" aria-hidden="true">Atualizar foto</span>
                 <input type='file' id="foto" style="display:none" (change)="selecionarFoto($event)" accept="image/*">
             </label>

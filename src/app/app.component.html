@@ -13,7 +13,7 @@
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">people_alt</mat-icon><span class="d-inline p-2">Pacientes Cadastrados</span></mat-button>
 
-            <mat-button *ngIf="role == 'PATIENT'" class="btn-side-menu" mat-list-item>
+            <mat-button *ngIf="role == 'PATIENT'" class="btn-side-menu" mat-list-item (click)="redirectToPatientEvaluationList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Minhas Avaliações</span></mat-button>
         </mat-nav-list>
     </mat-sidenav>
@@ -28,7 +28,7 @@
             </div>
             <span class="spacer"></span>
             <span *ngIf="greetings != null && isLogged" class="greeting-span">{{ greetings }}</span>
-            <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><img [src]="imageFile" id="userPicIcon"></button>
+            <button *ngIf="isLogged" mat-button class="menu-greeting" [matMenuTriggerFor]="menu"><img [attr.src]="profilePicture" id="profile" class="rounded-circle"></button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="viewProfile()"><mat-icon>person_outline</mat-icon> Editar perfil </button>
                 <button mat-menu-item (click)="deleteTherapist()" *ngIf="role == 'THERAPIST'"><mat-icon>delete_forever</mat-icon> Excluir perfil </button>

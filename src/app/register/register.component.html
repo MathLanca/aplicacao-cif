@@ -4,7 +4,7 @@
             <mat-card-title>Cadastro de aplicação Core Set CIF geriátrico</mat-card-title>
         </mat-card-header>
 
-        <mat-horizontal-stepper linear="false" #stepper>
+        <mat-horizontal-stepper linear="true" #stepper>
             <mat-step [stepControl]="personForm">
                 <form [formGroup]="personForm" autocomplete="off">
                     <ng-template matStepLabel>Dados Pessoais</ng-template>

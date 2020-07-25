@@ -218,3 +218,16 @@ mat-icon.icon-side-menu {
     margin-top:0.4em;
     border:none; 
 }
+
+#changeImage:hover{
+    cursor: pointer;
+}
+
+.imagePreview{
+    width:100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:0.4em;
+    border:none; 
+}

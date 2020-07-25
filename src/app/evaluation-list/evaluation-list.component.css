@@ -31,3 +31,10 @@ table {
 .cardContent{
     padding: 0.7em;
 }
+
+#warningEvaluation{
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.8em;
+    color:#E4022D;
+}
