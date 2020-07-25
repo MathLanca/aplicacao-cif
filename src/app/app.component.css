@@ -138,8 +138,7 @@ ul.breadcrumb {
 }
 
 /* Profile pic styles */
-#userPicIcon{
-    border-radius: 50%;
+#profile{
     height:50px;
     width: 50px;
 }

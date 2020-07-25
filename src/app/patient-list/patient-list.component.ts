@@ -41,7 +41,12 @@ export class PatientListComponent implements OnInit {
       .subscribe(
         data => {
           this.loading = false;
-          this.patients = data
+          this.patients = data;
+          for(let i = 0; i < this.patients.length; i++){
+            if(this.patients[i].profilePic == null){
+              this.patients[i].profilePic = '../assets/images/profile_icon.png';
+            }
+          }
         }
       );
   }
@@ -72,6 +77,10 @@ export class PatientListComponent implements OnInit {
 
   newEvaluation(patient: Person) {
     this.router.navigate(['evaluation'], { state: { patient: patient } })
+  }
+
+  redirectToPatientEvaluations(id: String){
+    this.router.navigate(['patient-evaluations', {patientId: id}]);
   }
 
 }

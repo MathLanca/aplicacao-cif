@@ -32,6 +32,11 @@ export class EvaluationService {
     return this.http.get<Evaluation[]>(url);
   }
 
+  getPatientEvaluations(patientId:string): Observable<Evaluation[]>{
+    const url = `${environment.evaluationBaseUrl}/v1/evaluation/patientevaluations/${patientId}`;
+    return this.http.get<Evaluation[]>(url);
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

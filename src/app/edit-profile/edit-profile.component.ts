@@ -48,8 +48,8 @@ export class EditProfileComponent implements OnInit {
   ];
   
   public imageFile: any;
-  public test: any;
   public urlImage: any;
+  profilePicture: string;
   
   constructor(
     private removeAccount: RemoveAccountService,
@@ -96,11 +96,11 @@ export class EditProfileComponent implements OnInit {
                 this.address = this.addressForm.value;
                 this.person.address = this.address;
                 this.person.patient = this.patient;
-                // this.person.birthDate = new Date(this.person.birthDate).toISOString();
                 this.person.birthDate = this.storedBirth;
                 this.person.profilePic = this.urlImage;
                 console.log("data de nascimento:" + this.person.birthDate);
                 console.log(this.person);
+                this.loaded = false;
                 this.editProfileService.updateProfile(this.person)
                               .subscribe(
                     (res: any) => {
@@ -188,8 +188,10 @@ export class EditProfileComponent implements OnInit {
           .subscribe(data => {
             this.user = data;
             this.storedBirth = this.user.birthDate;
-            if(this.user.profilePic){
-              this.imageFile = this.user.profilePic;
+            if(this.user.profilePic == null){
+              this.profilePicture = "../assets/images/profile_icon.png"
+            } else {
+              this.profilePicture = this.user.profilePic;
             }
             this.loaded = true;
           });
