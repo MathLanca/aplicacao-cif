@@ -594,8 +594,8 @@
             <h1 class="header-title display-5">Relatório de Classificação Funcional</h1>
             <hr>
             <div class="first-header">
-                <p><span class="bold-font">Paciente: </span>{{ evaluation.patientId }}</p>
-                <p><span class="bold-font">Terapeuta: </span>{{ evaluation.therapistId }}</p>
+                <p><span class="bold-font">Paciente: </span>{{firstName}} {{lastName}}</p>
+                <p><span class="bold-font">Terapeuta: </span>{{ therapistData.firstName }} {{ therapistData.lastName }}</p>
                 <p><span class="bold-font">Local: </span>{{ evaluation.location }}</p>
                 <p><span class="bold-font">Data: </span> {{ evaluation.date | date:"dd 'de' MMM 'de' yyyy"}} </p>
 

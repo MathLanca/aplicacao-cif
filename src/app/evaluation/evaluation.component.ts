@@ -11,6 +11,7 @@ import { PatientListService } from '../service/patient-list.service';
 import { Evaluation } from '../interfaces/evaluation';
 import { Answer } from '../interfaces/answer';
 import { EvaluationService } from '../service/evaluation.service';
+import { AuthService } from '../service/auth.service';
 declare var xepOnline: any;
 @Component({
   selector: 'app-evaluation',
@@ -71,6 +72,12 @@ export class EvaluationComponent implements OnInit {
 
   questions: Observable<Questions>;
   questionList: Questions;
+  patientName: import("c:/mackenzie/tcc/git_repo/aplicacao-cif/src/app/interfaces/patient").Patient;
+  firstName: any;
+  lastName: any;
+  space: string;
+  therapistData: any;
+
 
   constructor(
     private route: Router,
@@ -78,7 +85,8 @@ export class EvaluationComponent implements OnInit {
     private questionService: QuestionService,
     private patientService: PatientListService,
     private evaluationService:EvaluationService,
-    private snackbar: MatSnackBar) {
+    private snackbar: MatSnackBar,
+    private authService:AuthService) {
     if (this.route.getCurrentNavigation().extras != "undefined" &&
       this.route.getCurrentNavigation().extras.state != null) {
       this.patient = this.route.getCurrentNavigation().extras.state.patient;
@@ -92,6 +100,14 @@ export class EvaluationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.getUserData(localStorage.getItem("user"))
+      .subscribe(
+        data => {
+          this.therapistData = data;
+          console.log("Dados do profissional");
+          console.log(this.therapistData);
+        }
+      )
     this.questionService.listQuestions().subscribe(
       data => {
         
@@ -180,7 +196,18 @@ export class EvaluationComponent implements OnInit {
     this.evaluation.therapistId = localStorage.getItem("user");
     this.evaluation.date = new Date().toISOString();
     this.evaluation.answers = [];
-    console.log(this.evaluation)
+    console.log(this.evaluation);
+    this.patientService.getPatientData(this.evaluation.patientId)
+    .subscribe(
+      data => {
+        this.firstName = data.firstName;
+        this.lastName = data.lastName;
+        console.log(this.firstName);
+        console.log(this.lastName);
+      }
+    ); 
+    
+   
   }
 
   getQuestionCode(answer:Answer, array:any[]){
