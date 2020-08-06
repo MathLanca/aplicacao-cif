@@ -64,13 +64,21 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
 
-                    <input type='file' (change)="selecionarFoto($event)" id="foto" accept="image/*">
+                    
 
                     <div class="nextStep">
-                        <button mat-button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="float-left">
-                            Cancelar
+                        <!-- <input type='file' class="btn btn-warn" (change)="selecionarFoto($event)" id="foto" accept="image/*"> -->
+
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" (change)="selecionarFoto($event)" id="foto" accept="image/*">
+                              <label class="custom-file-label" for="foto">Enviar foto</label>
+                            </div>
+                          </div>
+
+                        <button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="float-left">                            Cancelar
                         </button>
-                        <button mat-button mat-button matStepperNext mat-stroked-button type="submit" color="warn" class="float-right">
+                        <button mat-button matStepperNext mat-stroked-button type="submit" color="warn" class="float-right">
                             Próximo
                         </button>
                     </div>
