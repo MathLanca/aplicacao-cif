@@ -87,7 +87,13 @@ mat-icon.icon-side-menu {
 }
 
 @media(max-width: 768px) {
-    .greeting-span {
+    .greeting-span, .rounded-circle {
+        display: none;
+    }
+}
+
+@media(min-width: 768px) {
+    .hidden-button {
         display: none;
     }
 }
