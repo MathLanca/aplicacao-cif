@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { SessionService } from './session.service';
 import { Answer } from '../interfaces/answer';
+import { Person } from '../interfaces/person';
+import { Patient } from '../interfaces/patient';
 
 @Injectable({
   providedIn: 'root'

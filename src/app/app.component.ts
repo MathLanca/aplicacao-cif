@@ -34,6 +34,10 @@ export class AppComponent implements OnChanges {
   profilePicture;
 
   public user;
+
+  name: any;
+  message: string = "Olá, " + localStorage.name;
+
   
   constructor(
     iconRegistry: MatIconRegistry, 
@@ -102,6 +106,7 @@ export class AppComponent implements OnChanges {
     this.isLogged = this.islogged();
     this.greetings = this.setGreetigns();
     this.role = localStorage.getItem('role');
+    this.name = localStorage.name;
     if (this.sessionService.getUserLogged() == null) {
       return this.route.navigate(['']);
     }
@@ -120,8 +125,12 @@ export class AppComponent implements OnChanges {
 
   openSideMenu(){
     if(this.drawerElement != undefined){
+      this.message = "Olá, " + localStorage.name;
       this.drawerElement.open();
-    }
+      console.log("abriu");
+    } else {
+      console.log("fechou");
+    }    
   }
 
   islogged() {

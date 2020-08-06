@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav class="sidenav" *ngIf="isLogged" #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false || openMenu">
-        <mat-toolbar color="warn">Menu</mat-toolbar>
+        <mat-toolbar color="warn">{{message}}</mat-toolbar>
         <mat-nav-list class="list-menu-side">
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluation()">
                 <mat-icon class="d-inline p-2 icon-side-menu">add_to_queue</mat-icon><span class="d-inline p-2">Nova Avaliação</span></mat-button>
@@ -15,6 +15,13 @@
 
             <mat-button *ngIf="role == 'PATIENT'" class="btn-side-menu" mat-list-item (click)="redirectToPatientEvaluationList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Minhas Avaliações</span></mat-button>
+
+            <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="viewProfile()">
+                <mat-icon class="d-inline p-2 icon-side-menu">person_outline</mat-icon><span class="d-inline p-2">Editar perfil</span></mat-button>
+            <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="deleteTherapist()">
+                <mat-icon class="d-inline p-2 icon-side-menu">delete_forever</mat-icon><span class="d-inline p-2">Excluir perfil</span></mat-button>
+            <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="logout()">
+                <mat-icon class="d-inline p-2 icon-side-menu">exit_to_app</mat-icon><span class="d-inline p-2">Sair</span></mat-button>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
