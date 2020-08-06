@@ -34,8 +34,10 @@ export class AppComponent implements OnChanges {
   profilePicture;
 
   public user;
+
   name: any;
   message: string = "Olá, " + localStorage.name;
+
   
   constructor(
     iconRegistry: MatIconRegistry, 
