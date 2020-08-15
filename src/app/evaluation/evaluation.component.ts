@@ -34,6 +34,25 @@ export class EvaluationComponent implements OnInit {
     12:"Dezembro"
   }
 
+  public object: {[key: string]: string} = {
+    "Assistência Social":'CRESS',   
+    "Biologia":'CRBio', 
+    "Biomedicina":"CRBM", 
+    "Educação Física": "CREF", 
+    "Enfermagem": 'COREN', 
+    'Farmácia':'CRF',
+    'Fisioterapia':'CREFITO',
+    'Fonoaudiologia':'CREFONO',
+    "Medicina": 'CRM', 
+    'Medicina Veterinária':'CRMV',
+    'Nutrição':'CRN',
+    'Odontologia':'CRO',
+    'Psicologia':'CRP',
+    'Terapia Ocupacional':'COFFITO'
+  };
+
+  regionalID:String;
+
   stepOne = "Informações da Avaliação";
   stepTwo = "Fatores Ambientais";
   stepThree = "Atividade E Participação";
@@ -106,6 +125,7 @@ export class EvaluationComponent implements OnInit {
           this.therapistData = data;
           console.log("Dados do profissional");
           console.log(this.therapistData);
+          this.regionalID = this.object[this.therapistData.professionalData.occupation];     
         }
       )
     this.questionService.listQuestions().subscribe(
@@ -194,7 +214,9 @@ export class EvaluationComponent implements OnInit {
   addIEtoBounderObject() {
     this.evaluation = this.ieFormGroup.value;
     this.evaluation.therapistId = localStorage.getItem("user");
-    this.evaluation.date = new Date().toISOString();
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    this.evaluation.date = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);;
+    
     this.evaluation.answers = [];
     console.log(this.evaluation);
     this.patientService.getPatientData(this.evaluation.patientId)
@@ -382,5 +404,9 @@ export class EvaluationComponent implements OnInit {
       return this.formBuilder.array(values, Validators.required);
     }
     return this.formBuilder.array([new FormControl('')], Validators.required);
+  }
+
+  redirectToPatientRegister() {
+    this.route.navigate(['patientRegister']);
   }
 }

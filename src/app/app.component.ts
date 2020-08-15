@@ -36,7 +36,8 @@ export class AppComponent implements OnChanges {
   public user;
 
   name: any;
-  message: string = "Olá, " + localStorage.name;
+  message:String;
+  
 
   
   constructor(
@@ -107,6 +108,12 @@ export class AppComponent implements OnChanges {
     this.greetings = this.setGreetigns();
     this.role = localStorage.getItem('role');
     this.name = localStorage.name;
+    if(localStorage.name == "" || localStorage.name == undefined || localStorage.name == null){
+      this.message = "Bem-vindo";
+    } else {
+      this.message = "Olá, " + localStorage.name;
+    }
+    
     if (this.sessionService.getUserLogged() == null) {
       return this.route.navigate(['']);
     }
@@ -125,7 +132,6 @@ export class AppComponent implements OnChanges {
 
   openSideMenu(){
     if(this.drawerElement != undefined){
-      this.message = "Olá, " + localStorage.name;
       this.drawerElement.open();
       console.log("abriu");
     } else {
