@@ -2,13 +2,13 @@
     <mat-sidenav class="sidenav" *ngIf="isLogged" #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false || openMenu">
         <mat-toolbar color="warn">{{message}}</mat-toolbar>
         <mat-nav-list class="list-menu-side">
+            <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientRegister()">
+                <mat-icon class="d-inline p-2 icon-side-menu">person_add</mat-icon><span class="d-inline p-2">Cadastrar Paciente</span>
+            </mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluation()">
                 <mat-icon class="d-inline p-2 icon-side-menu">add_to_queue</mat-icon><span class="d-inline p-2">Nova Avaliação</span></mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluationList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Avaliações Anteriores</span>
-            </mat-button>
-            <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientRegister()">
-                <mat-icon class="d-inline p-2 icon-side-menu">person_add</mat-icon><span class="d-inline p-2">Cadastrar Paciente</span>
             </mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">people_alt</mat-icon><span class="d-inline p-2">Pacientes Cadastrados</span></mat-button>

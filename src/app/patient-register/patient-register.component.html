@@ -4,7 +4,7 @@
             <mat-card-title>Cadastro de Paciente</mat-card-title>
         </mat-card-header>
 
-        <mat-horizontal-stepper linear="false" #stepper>
+        <mat-horizontal-stepper linear="true" #stepper>
             <mat-step [stepControl]="personForm">
                 <form [formGroup]="personForm">
                     <ng-template matStepLabel>Dados Pessoais</ng-template>
@@ -14,21 +14,21 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Sobrenome</mat-label>
-                        <input matInput placeholder="Sobrenome" formControlName="lastName" required>
+                        <input matInput placeholder="Sobrenome" formControlName="lastName" autocomplete="off" required>
                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>CPF</mat-label>
-                        <input mask="000.000.000-00" maxlength="14" matTooltip="CPF sem pontuação" matTooltipPosition="after" matInput placeholder="CPF" #cpf formControlName="cpf" required>
+                        <input mask="000.000.000-00" maxlength="14" matTooltip="CPF sem pontuação" autocomplete="off" matTooltipPosition="after" matInput placeholder="CPF" #cpf formControlName="cpf" required>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email" #email type="email" formControlName="email" required>
+                        <input matInput placeholder="Email" #email type="email" formControlName="email" autocomplete="off" required>
                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>Senha</mat-label>
-                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="Senha" type="password" formControlName="password" required>
+                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" autocomplete="off" matInput placeholder="Senha" type="password" formControlName="password" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
                             <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
@@ -36,7 +36,7 @@
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Confirmar Senha</mat-label>
-                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" matInput placeholder="Senha" (change)="validatePass()" type="password" formControlName="confirmPass" required>
+                        <input maxlength="8" matTooltip="Entre 6 e 8 caracteres" matTooltipPosition="after" autocomplete="off" matInput placeholder="Senha" (change)="validatePass()" type="password" formControlName="confirmPass" required>
                         <div *ngIf="!equalPass">
                             <p class="cepNF">Senhas não correspondem!</p>
                             <p class="cepNF">Minimo 6 Maximo 8 caracteres!</p>
@@ -45,7 +45,7 @@
 
                     <mat-form-field>
                         <mat-label>Celular</mat-label>
-                        <input mask="(00)00000-0000" maxlength="14" matTooltip="Com DDD" matTooltipPosition="after" matInput placeholder="Celular" formControlName="telephoneNumber" required>
+                        <input mask="(00)00000-0000" maxlength="14" matTooltip="Com DDD" autocomplete="off" matTooltipPosition="after" matInput placeholder="Celular" formControlName="telephoneNumber" required>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Gênero</mat-label>
@@ -58,13 +58,13 @@
 
                     <mat-form-field>
                         <mat-label>Data de Nascimento</mat-label>
-                        <input matInput [matDatepicker]="picker" readonly (click)="picker.open()" required formControlName="birthDate">
+                        <input matInput [matDatepicker]="picker" readonly (click)="picker.open()" required autocomplete="off" formControlName="birthDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field formGroupName="patient" appearance="fill">
                         <mat-label>Observações (Opcional)</mat-label>
-                        <textarea matInput rows="10" formControlName="note" placeholder="Observações"></textarea>
+                        <textarea matInput rows="10" formControlName="note" autocomplete="off" placeholder="Observações"></textarea>
                     </mat-form-field>
                     <div class="nextStep ">
                         <button mat-button (click)="goBack2Login()" mat-stroked-button type="submit" color="warn" class="float-left">
@@ -81,7 +81,7 @@
                     <ng-template matStepLabel>Dados Residênciais</ng-template>
                     <mat-form-field>
                         <mat-label>CEP</mat-label>
-                        <input mask="00000-000" matInput placeholder="CEP" (change)="searchCEP()" formControlName="postalCode" required>
+                        <input mask="00000-000" matInput placeholder="CEP" (change)="searchCEP()" autocomplete="off" formControlName="postalCode" required>
                         <div *ngIf="cepNotFound">
                             <p class="cepNF">CEP não encontrado!</p>
                         </div>
@@ -89,20 +89,20 @@
 
                     <mat-form-field>
                         <mat-label>Rua</mat-label>
-                        <input matInput placeholder="Rua" formControlName="publicPlace" required>
+                        <input matInput placeholder="Rua" formControlName="publicPlace" autocomplete="off" required>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Número</mat-label>
-                        <input matInput placeholder="Senha" formControlName="houseNumber" required>
+                        <input matInput placeholder="Senha" formControlName="houseNumber" autocomplete="off" required>
                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>Bairro</mat-label>
-                        <input matInput placeholder="Nome" formControlName="neighborhood" required>
+                        <input matInput placeholder="Nome" formControlName="neighborhood" autocomplete="off" required>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Cidade</mat-label>
-                        <input matInput placeholder="Sobrenome" formControlName="city" required>
+                        <input matInput placeholder="Cidade" formControlName="city" autocomplete="off" required>
                     </mat-form-field>
 
                     <mat-form-field>
