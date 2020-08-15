@@ -19,20 +19,7 @@ declare var xepOnline: any;
   styleUrls: ['./evaluation.component.css']
 })
 export class EvaluationComponent implements OnInit {
-  public months: {[key: number]: string} = {
-    1: "Janeiro",
-    2: "Fevereiro",
-    3: "Março",
-    4: "Abril",
-    5: "Maio",
-    6: "Junho",
-    7: "Julho",
-    8: "Agosto",
-    9: "Setembro",
-    10:"Outubro",
-    11:"Novembro",
-    12:"Dezembro"
-  }
+  
 
   public object: {[key: string]: string} = {
     "Assistência Social":'CRESS',   
@@ -52,6 +39,7 @@ export class EvaluationComponent implements OnInit {
   };
 
   regionalID:String;
+
 
   stepOne = "Informações da Avaliação";
   stepTwo = "Fatores Ambientais";
@@ -156,12 +144,28 @@ export class EvaluationComponent implements OnInit {
   }
 
   dateConversion(date:string){
+
+    var  months: {[key: number]: string} = {
+      1: "Janeiro",
+      2: "Fevereiro",
+      3: "Março",
+      4: "Abril",
+      5: "Maio",
+      6: "Junho",
+      7: "Julho",
+      8: "Agosto",
+      9: "Setembro",
+      10:"Outubro",
+      11:"Novembro",
+      12:"Dezembro"
+    };
+
     let str = date; 
     let splitted = str.split("-", 3); 
     let day = splitted[2].substring(0,2);
     let month = splitted[1];
     let year = splitted[0];
-    return day + " de " + this.months[parseInt(month)] + " de " + year;
+    return day + " de " + months[parseInt(month)] + " de " + year;
   } 
   
   setQuestionsIdAndValidations(fg: FormGroup, list: any[]) {
@@ -215,7 +219,8 @@ export class EvaluationComponent implements OnInit {
     this.evaluation = this.ieFormGroup.value;
     this.evaluation.therapistId = localStorage.getItem("user");
     var tzoffset = (new Date()).getTimezoneOffset() * 60000;
-    this.evaluation.date = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);;
+    this.evaluation.date = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+    var testando = this.dateConversion(this.evaluation.date);
     
     this.evaluation.answers = [];
     console.log(this.evaluation);
@@ -409,4 +414,6 @@ export class EvaluationComponent implements OnInit {
   redirectToPatientRegister() {
     this.route.navigate(['patientRegister']);
   }
+
+  
 }
