@@ -1,7 +1,7 @@
 <div *ngIf="!loaded" class="spinner" fxLayoutAlign="center">
     <mat-spinner></mat-spinner>
 </div>
-<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="true" #stepper>
+<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="false" #stepper>
     <mat-step fxLayoutAlign="center" [stepControl]="ieFormGroup">
         <form [formGroup]="ieFormGroup" autocomplete="off">
             <ng-template matStepLabel>
@@ -616,6 +616,9 @@
                 <p><span class="bold-font">Profissional: </span>{{ therapistData.firstName }} {{ therapistData.lastName }}</p>
                 <p><span class="bold-font">Local: </span>{{ evaluation.location }}</p>
                 <p><span class="bold-font">Data: </span> {{ evaluation.date | date:"dd 'de' MMM 'de' yyyy"}} </p>
+                <p><span class="bold-font">Data: </span> {{ testando }} </p>
+   
+                
 
             </div>
             <hr>
@@ -631,22 +634,18 @@
                     </td>
                 </tr>
             </table>
-            <h4 matTooltip="{{stepTwo}}">{{stepTwo}}</h4>
-            <div *ngFor="let question of environmentalFactors">
+            <hr>
+
+            <h4 matTooltip="{{stepFive}} ">{{stepFive}}</h4>
+            <div *ngFor="let question of bodyFunctions">
                 <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
                     <h5 class="p-2">{{ question.code }} - {{ question.title }}</h5>
                     <p class="p-2">Geral: {{ getAnswerGrade(question).generalGrade }}</p>
+                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
+                    <p class="p-2">Descrição do problema(opcional): {{ getAnswerGrade(question).problemDescription }}</p>
                 </div>
             </div>
-            <hr>
-            <h4 matTooltip="{{stepThree}} ">{{stepThree}}</h4>
-            <div *ngFor="let question of activityAndParticipation ">
-                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
-                    <h5 class="p-2">{{ question.code }} - {{ question.title }}</h5>
-                    <p class="p-2">C: {{ getAnswerGrade(question).capacityGrade }}</p>
-                    <p class="p-2">P: {{ getAnswerGrade(question).performanceGrade }}</p>
-                </div>
-            </div>
+
             <hr>
             <h4 matTooltip="{{stepFour}} ">{{stepFour}}</h4>
             <div *ngFor="let question of bodyStructures">
@@ -655,16 +654,35 @@
                     <p class="p-2">Localização: {{ getAnswerGrade(question).locationGrade }}</p>
                     <p class="p-2">Natureza: {{ getAnswerGrade(question).natureGrade }}</p>
                     <p class="p-2">Extensão: {{ getAnswerGrade(question).extensionGrade }}</p>
+                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
+                    <p class="p-2">Descrição do problema(opcional): {{ getAnswerGrade(question).problemDescription }}</p>
                 </div>
             </div>
+            
             <hr>
-            <h4 matTooltip="{{stepFive}} ">{{stepFive}}</h4>
-            <div *ngFor="let question of bodyFunctions">
+            <h4 matTooltip="{{stepThree}} ">{{stepThree}}</h4>
+            <div *ngFor="let question of activityAndParticipation ">
+                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
+                    <h5 class="p-2">{{ question.code }} - {{ question.title }}</h5>
+                    <p class="p-2">C: {{ getAnswerGrade(question).capacityGrade }}</p>
+                    <p class="p-2">P: {{ getAnswerGrade(question).performanceGrade }}</p>
+                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
+                    <p class="p-2">Descrição do problema(opcional): {{ getAnswerGrade(question).problemDescription }}</p>
+                </div>
+            </div>
+            
+            <hr>
+            <h4 matTooltip="{{stepTwo}}">{{stepTwo}}</h4>
+            <div *ngFor="let question of environmentalFactors">
                 <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
                     <h5 class="p-2">{{ question.code }} - {{ question.title }}</h5>
                     <p class="p-2">Geral: {{ getAnswerGrade(question).generalGrade }}</p>
+                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
+                    <p class="p-2">Descrição do problema(opcional): {{ getAnswerGrade(question).problemDescription }}</p>
                 </div>
             </div>
+            
+            
             <div id="rectangle"> </div>
     <p style="text-align: center; font-weight: bold;"> Assinatura e carimbo do profissional </p>
     <p style="text-align: center;"> {{ therapistData.firstName }} {{ therapistData.lastName }} </p>
