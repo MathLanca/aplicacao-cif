@@ -12,6 +12,7 @@ import { Evaluation } from '../interfaces/evaluation';
 import { Answer } from '../interfaces/answer';
 import { EvaluationService } from '../service/evaluation.service';
 import { AuthService } from '../service/auth.service';
+import { Patient } from '../interfaces/patient';
 declare var xepOnline: any;
 @Component({
   selector: 'app-evaluation',
@@ -79,7 +80,7 @@ export class EvaluationComponent implements OnInit {
 
   questions: Observable<Questions>;
   questionList: Questions;
-  patientName: import("c:/mackenzie/tcc/git_repo/aplicacao-cif/src/app/interfaces/patient").Patient;
+  patientName: Patient;
   firstName: any;
   lastName: any;
   space: string;
@@ -144,6 +145,9 @@ export class EvaluationComponent implements OnInit {
   }
 
   dateConversion(date:string){
+    if(date == undefined){
+      return date;
+    }
 
     var  months: {[key: number]: string} = {
       1: "Janeiro",
