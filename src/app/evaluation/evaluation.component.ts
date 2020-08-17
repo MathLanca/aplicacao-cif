@@ -145,6 +145,9 @@ export class EvaluationComponent implements OnInit {
   }
 
   dateConversion(date:string){
+    if(date == undefined){
+      return date;
+    }
 
     var  months: {[key: number]: string} = {
       1: "Janeiro",

@@ -3,7 +3,7 @@ export interface Answer {
     infoSource:string;
     problemDescription:string;
 
-    generalGrade:number;
+    generalGrade:string;
     
     capacityGrade:number;
     performanceGrade:number;
