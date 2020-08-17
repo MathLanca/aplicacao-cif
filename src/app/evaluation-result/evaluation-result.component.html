@@ -22,13 +22,9 @@
 
     <div *ngFor="let answer of evaluation.answers">
         <div class="border rounded mb-3">
-            <h5>{{ answer.questionCode}} - {{ answer.questionDescription}}</h5>
-            <p class="p-2" *ngIf="answer.generalGrade != null">Nota Geral: {{answer.generalGrade}} </p>
-            <p class="p-2" *ngIf="answer.locationGrade != null">Nota de localização: {{answer.locationGrade}} </p>
-            <p class="p-2" *ngIf="answer.extensionGrade != null">Nota de Extensão: {{answer.extensionGrade}} </p>
-            <p class="p-2" *ngIf="answer.natureGrade != null">Nota de natureza: {{answer.natureGrade}} </p>
-            <p class="p-2" *ngIf="answer.capacityGrade != null">Capacidade: {{answer.capacityGrade}} </p>
-            <p class="p-2" *ngIf="answer.performanceGrade != null">Performace: {{answer.performanceGrade}} </p>
+            <h5 *ngIf="answer.generalGrade != null">{{ answer.questionCode}}.{{answer.generalGrade}} - {{ answer.questionDescription}}</h5>
+            <h5 *ngIf="answer.locationGrade != null">{{ answer.questionCode}}.{{answer.locationGrade}}.{{answer.extensionGrade}}.{{answer.natureGrade}} - {{ answer.questionDescription}}</h5>
+            <h5 *ngIf="answer.capacityGrade != null">{{ answer.questionCode}}.{{answer.capacityGrade}}.{{answer.performanceGrade}} - {{ answer.questionDescription}}</h5>
             <p class="p-2" *ngIf="answer.infoSource != null">Fonte da informação: {{answer.infoSource}} </p>
             <p class="p-2" *ngIf="answer.problemDescription != null ">Detalhes: {{answer.problemDescription}} </p>
         </div>
