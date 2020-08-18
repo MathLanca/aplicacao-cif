@@ -1,7 +1,7 @@
 <div *ngIf="!loaded" class="spinner" fxLayoutAlign="center">
     <mat-spinner></mat-spinner>
 </div>
-<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="false" #stepper>
+<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="true" #stepper>
     <mat-step fxLayoutAlign="center" [stepControl]="ieFormGroup">
         <form [formGroup]="ieFormGroup" autocomplete="off">
             <ng-template matStepLabel>
