@@ -175,7 +175,6 @@ export class EvaluationComponent implements OnInit {
   setQuestionsIdAndValidations(fg: FormGroup, list: any[]) {
     for (let index = 0; index < list.length; index++) {
       fg.controls.questionId.get([index]).setValue(list[index].id);
-      fg.controls.infoSource.get([index]).setValidators(Validators.required);
       if (fg.controls.generalGrade != undefined) {
         console.log("generalGrade setado")
         fg.controls.generalGrade.get([index]).setValidators(Validators.required);
@@ -388,11 +387,11 @@ export class EvaluationComponent implements OnInit {
   buildInfoSource(questions: Question[]) {
     if (questions != null || questions != undefined) {
       const values = questions.map(() => {
-        new FormControl(this.answer.infoSource, [Validators.required])
+        new FormControl(this.answer.infoSource)
       });
-      return this.formBuilder.array(values, [Validators.required]);
+      return this.formBuilder.array(values);
     }
-    return this.formBuilder.array([new FormControl('', [Validators.required])], Validators.required);
+    return this.formBuilder.array([new FormControl('')]);
   }
 
   buildProblemDescription(questions: Question[]) {
