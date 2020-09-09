@@ -103,8 +103,6 @@ export class EvaluationComponent implements OnInit {
     } else {
       this.ieFormGroup = this.createieFormGroup();
     }
-    // this.bsFormGroup = this.createbsFormGroup();
-    // this.bfFormGroup = this.createbfFormGroup();
   }
 
   ngOnInit(): void {
@@ -175,7 +173,6 @@ export class EvaluationComponent implements OnInit {
   setQuestionsIdAndValidations(fg: FormGroup, list: any[]) {
     for (let index = 0; index < list.length; index++) {
       fg.controls.questionId.get([index]).setValue(list[index].id);
-      fg.controls.infoSource.get([index]).setValidators(Validators.required);
       if (fg.controls.generalGrade != undefined) {
         console.log("generalGrade setado")
         fg.controls.generalGrade.get([index]).setValidators(Validators.required);
@@ -316,6 +313,32 @@ export class EvaluationComponent implements OnInit {
       )
   }
 
+  gratherThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA <= numB;
+      }
+    }
+    return numA >= numB
+  }
+
+  lessThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA >= numB;
+      }
+    }
+    return numA <= numB
+  }
+
   createieFormGroup() {
     return new FormGroup({
       'patientId': new FormControl(this.evaluation.patientId, [Validators.required]),
@@ -388,11 +411,11 @@ export class EvaluationComponent implements OnInit {
   buildInfoSource(questions: Question[]) {
     if (questions != null || questions != undefined) {
       const values = questions.map(() => {
-        new FormControl(this.answer.infoSource, [Validators.required])
+        new FormControl(this.answer.infoSource)
       });
-      return this.formBuilder.array(values, [Validators.required]);
+      return this.formBuilder.array(values);
     }
-    return this.formBuilder.array([new FormControl('', [Validators.required])], Validators.required);
+    return this.formBuilder.array([new FormControl('')]);
   }
 
   buildProblemDescription(questions: Question[]) {
