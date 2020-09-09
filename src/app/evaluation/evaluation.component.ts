@@ -103,8 +103,6 @@ export class EvaluationComponent implements OnInit {
     } else {
       this.ieFormGroup = this.createieFormGroup();
     }
-    // this.bsFormGroup = this.createbsFormGroup();
-    // this.bfFormGroup = this.createbfFormGroup();
   }
 
   ngOnInit(): void {
@@ -313,6 +311,32 @@ export class EvaluationComponent implements OnInit {
           console.log(err);
         }
       )
+  }
+
+  gratherThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA <= numB;
+      }
+    }
+    return numA >= numB
+  }
+
+  lessThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA >= numB;
+      }
+    }
+    return numA <= numB
   }
 
   createieFormGroup() {

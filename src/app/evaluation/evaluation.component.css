@@ -10,6 +10,26 @@ h3 {
     display: flex;
 }
 
+table{
+    border-spacing: 10px;
+}
+
+.expanded-cell{
+    width: 100%;
+}
+
+.expand{
+    height: 30px;    
+}
+
+.colored-bar{
+    background-color: #E4022D;
+}
+
+.colored-bar-light{
+    background-color: #e0788b;
+}
+
 .mat-stroked-button {
     border: 1px solid currentColor;
     line-height: 35px;

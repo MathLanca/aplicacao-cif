@@ -32,7 +32,8 @@
                         Cancelar
                     </button>
                     <span class="spacer"></span>
-                    <button mat-button matStepperNext [disabled]="!ieFormGroup.valid" mat-stroked-button (click)="addIEtoBounderObject()" color="warn" class="float-right">
+                    <button mat-button matStepperNext [disabled]="!ieFormGroup.valid" mat-stroked-button
+                        (click)="addIEtoBounderObject()" color="warn" class="float-right">
                         Próximo
                     </button>
                 </div>
@@ -54,7 +55,8 @@
                     <p>Funções fisiológicas dos sistema corporais (incluindo as funções psicológicas)</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p class="bold-font">Onde:</p>
-                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
+                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 -
+                        Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -75,21 +77,31 @@
                     <mat-divider></mat-divider>
 
                     <p class="bold-font">{{ function.description }}</p>
-                    <p *ngIf="function.inclusion != null"><span class="bold-font">Inclusões: </span>{{ function.inclusion }}</p>
-                    <p *ngIf="function.exclusion != null"><span class="bold-font">Exclusões: </span>{{ function.exclusion }}</p>
+                    <p *ngIf="function.inclusion != null"><span class="bold-font">Inclusões:
+                        </span>{{ function.inclusion }}</p>
+                    <p *ngIf="function.exclusion != null"><span class="bold-font">Exclusões:
+                        </span>{{ function.exclusion }}</p>
 
                     <mat-divider></mat-divider>
 
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="generalGrade">
                         <span class="bold-font grade grade-radio">Geral</span>
-                        <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -110,11 +122,14 @@
 
                     <div fxLayoutAlign="start" class="general-grade" formArrayName="infoSource">
                         <span class="bold-font grade grade-radio">Fonte da informação</span>
-                        <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio" aria-label="Select an option">
+                        <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio"
+                            aria-label="Select an option">
                             <mat-radio-button color="warn" value="Anamnese">Anamnese</mat-radio-button>
-                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-radio-button>
+                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário
+                                relatado pelo paciente</mat-radio-button>
                             <mat-radio-button color="warn" value="Exame clínico">Exame clínico</mat-radio-button>
-                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica</mat-radio-button>
+                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica
+                            </mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -123,7 +138,8 @@
                             </mat-label>
                             <mat-select [formControlName]="bodyFunctions.indexOf(function)" class="grade-select">
                                 <mat-option color="warn" value="Anamnese">Anamnese</mat-option>
-                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-option>
+                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário
+                                    relatado pelo paciente</mat-option>
                                 <mat-option color="warn" value="Exame clínico">Exame clínico</mat-option>
                                 <mat-option color="warn" value="Investigação técnica">Investigação técnica</mat-option>
                             </mat-select>
@@ -132,21 +148,27 @@
 
                     <mat-form-field class="textarea" appearance="fill" formArrayName="problemDescription">
                         <mat-label>Descrição do Problema (Opcional)</mat-label>
-                        <textarea matInput cols="100000" [formControlName]="bodyFunctions.indexOf(function)" placeholder="Descrição do Problema"></textarea>
+                        <textarea matInput cols="100000" [formControlName]="bodyFunctions.indexOf(function)"
+                            placeholder="Descrição do Problema"></textarea>
                     </mat-form-field>
 
                 </mat-expansion-panel>
             </mat-accordion>
-            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}} devem ser respondidas</span>
+            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}}
+                devem ser respondidas</span>
             <div class="nextStep">
-                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn" class="btn-block btn-cancel">
+                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn"
+                    class="btn-block btn-cancel">
                     Anterior
                 </button>
                 <span class="spacer"></span>
-                <button mat-button mat-stroked-button [matTooltip]="invalids" (click)="validateForm(bfFormGroup,bodyFunctions)" matTooltipPosition="before" *ngIf="!bfFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button mat-stroked-button [matTooltip]="invalids"
+                    (click)="validateForm(bfFormGroup,bodyFunctions)" matTooltipPosition="before"
+                    *ngIf="!bfFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
-                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(bfFormGroup)" *ngIf="bfFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(bfFormGroup)"
+                    *ngIf="bfFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
             </div>
@@ -164,12 +186,19 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>As estruturas do corpo são partes anatômicas do corpo, como, orgãos, membros e seus componentes</p>
+                    <p>As estruturas do corpo são partes anatômicas do corpo, como, orgãos, membros e seus componentes
+                    </p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p class="bold-font">Onde:</p>
-                    <p>Extensão | 0 - Nenhuma deficiência | 1 - Deficiência leve | 2 - Deficiência moderada | 3 - Deficiência grave | 4 - Deficiência completa | 8 - Não especificada | 9 - Não aplicável </p>
-                    <p>Natureza | 0 - Nenhuma mudança na estrutura | 1 - Ausência total | 2 - Ausência parcial | 3 - Parte adicional | 4 - Dimensões aberrantes | 5 - Descontinuidade | 6 - Posição desviada | 7 - Mudanças qualitativas na estrutura, incluindo acúmulo de fluído | 8 - Não especificada | 9 - Não aplicável </p>
-                    <p>Localização | 0 - Mais de uma região | 1 - Direita | 2 - Esquerda | 3 - Ambos os lados | 4 - Parte dianteira | 5 - Parte traseira | 6 - Proximal | 7 - Distal | 8 - Não especificada | 9 - Não aplicável </p>
+                    <p>Extensão | 0 - Nenhuma deficiência | 1 - Deficiência leve | 2 - Deficiência moderada | 3 -
+                        Deficiência grave | 4 - Deficiência completa | 8 - Não especificada | 9 - Não aplicável </p>
+                    <p>Natureza | 0 - Nenhuma mudança na estrutura | 1 - Ausência total | 2 - Ausência parcial | 3 -
+                        Parte adicional | 4 - Dimensões aberrantes | 5 - Descontinuidade | 6 - Posição desviada | 7 -
+                        Mudanças qualitativas na estrutura, incluindo acúmulo de fluído | 8 - Não especificada | 9 - Não
+                        aplicável </p>
+                    <p>Localização | 0 - Mais de uma região | 1 - Direita | 2 - Esquerda | 3 - Ambos os lados | 4 -
+                        Parte dianteira | 5 - Parte traseira | 6 - Proximal | 7 - Distal | 8 - Não especificada | 9 -
+                        Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -189,20 +218,30 @@
                     <mat-divider></mat-divider>
 
                     <p *ngIf="structure.description != null" class="bold-font">{{ structure.description }}</p>
-                    <p *ngIf="structure.inclusion != null"><span class="bold-font">Inclusões: </span>{{ structure.inclusion }}</p>
-                    <p *ngIf="structure.exclusion != null"><span class="bold-font">Exclusões: </span>{{ structure.exclusion }}</p>
+                    <p *ngIf="structure.inclusion != null"><span class="bold-font">Inclusões:
+                        </span>{{ structure.inclusion }}</p>
+                    <p *ngIf="structure.exclusion != null"><span class="bold-font">Exclusões:
+                        </span>{{ structure.exclusion }}</p>
 
                     <mat-divider></mat-divider>
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="extensionGrade">
                         <span class="bold-font grade grade-radio">Extensão</span>
-                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Nenhuma deficiência" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Deficiência leve" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Deficiência moderada" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Deficiência grave" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Deficiência completa" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Nenhuma deficiência"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Deficiência leve"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Deficiência moderada"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Deficiência grave"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Deficiência completa"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -221,20 +260,32 @@
                         </mat-form-field>
                     </div>
 
-                    
+
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="natureGrade">
                         <span class="bold-font grade grade-radio">Natureza</span>
-                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Nenhuma mudança na estrutura" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Ausência total" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Ausência parcial" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Parte adicional" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Dimensões aberrantes" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="5" matTooltip="Descontinuidade" matTooltipPosition="above">5</mat-radio-button>
-                            <mat-radio-button color="warn" value="6" matTooltip="Posição desviada" matTooltipPosition="above">6</mat-radio-button>
-                            <mat-radio-button color="warn" value="7" matTooltip="Mudanças qualitativas na estrutura, incluindo acúmulo de fluído" matTooltipPosition="above">7</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Nenhuma mudança na estrutura"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Ausência total"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Ausência parcial"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Parte adicional"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Dimensões aberrantes"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="5" matTooltip="Descontinuidade"
+                                matTooltipPosition="above">5</mat-radio-button>
+                            <mat-radio-button color="warn" value="6" matTooltip="Posição desviada"
+                                matTooltipPosition="above">6</mat-radio-button>
+                            <mat-radio-button color="warn" value="7"
+                                matTooltip="Mudanças qualitativas na estrutura, incluindo acúmulo de fluído"
+                                matTooltipPosition="above">7</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -249,26 +300,38 @@
                                 <mat-option value="4">4 - Dimensões aberrantes</mat-option>
                                 <mat-option value="5">5 - Dimensões aberrantes</mat-option>
                                 <mat-option value="6">6 - Descontinuidade</mat-option>
-                                <mat-option value="7">7 - Mudanças qualitativas na estrutura, incluindo acúmulo de fluído</mat-option>
+                                <mat-option value="7">7 - Mudanças qualitativas na estrutura, incluindo acúmulo de
+                                    fluído</mat-option>
                                 <mat-option value="8">8 - Não especificado</mat-option>
                                 <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    
+
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="locationGrade">
                         <span class="bold-font grade grade-radio">Localização</span>
-                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Mais de uma região" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Direita" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Esquerda" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Ambos os lados" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Parte dianteira" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="5" matTooltip="Parte traseira" matTooltipPosition="above">5</mat-radio-button>
-                            <mat-radio-button color="warn" value="6" matTooltip="Proximal" matTooltipPosition="above">6</mat-radio-button>
-                            <mat-radio-button color="warn" value="7" matTooltip="Distal" matTooltipPosition="above">7</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Mais de uma região"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Direita" matTooltipPosition="above">1
+                            </mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Esquerda" matTooltipPosition="above">2
+                            </mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Ambos os lados"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Parte dianteira"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="5" matTooltip="Parte traseira"
+                                matTooltipPosition="above">5</mat-radio-button>
+                            <mat-radio-button color="warn" value="6" matTooltip="Proximal" matTooltipPosition="above">6
+                            </mat-radio-button>
+                            <mat-radio-button color="warn" value="7" matTooltip="Distal" matTooltipPosition="above">7
+                            </mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -292,11 +355,14 @@
 
                     <div fxLayoutAlign="start" class="general-grade" formArrayName="infoSource">
                         <span class="bold-font grade grade-radio">Fonte da informação</span>
-                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio" aria-label="Select an option">
+                        <mat-radio-group [formControlName]="bodyStructures.indexOf(structure)" class="grade-radio"
+                            aria-label="Select an option">
                             <mat-radio-button color="warn" value="Anamnese">Anamnese</mat-radio-button>
-                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-radio-button>
+                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário
+                                relatado pelo paciente</mat-radio-button>
                             <mat-radio-button color="warn" value="Exame clínico">Exame clínico</mat-radio-button>
-                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica</mat-radio-button>
+                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica
+                            </mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -305,7 +371,8 @@
                             </mat-label>
                             <mat-select [formControlName]="bodyStructures.indexOf(structure)" class="grade-select">
                                 <mat-option color="warn" value="Anamnese">Anamnese</mat-option>
-                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-option>
+                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário
+                                    relatado pelo paciente</mat-option>
                                 <mat-option color="warn" value="Exame clínico">Exame clínico</mat-option>
                                 <mat-option color="warn" value="Investigação técnica">Investigação técnica</mat-option>
                             </mat-select>
@@ -314,20 +381,26 @@
 
                     <mat-form-field class="textarea" appearance="fill" formArrayName="problemDescription">
                         <mat-label>Descrição do Problema (Opcional)</mat-label>
-                        <textarea matInput cols="100000" [formControlName]="bodyStructures.indexOf(structure)" placeholder="Descrição do Problema"></textarea>
+                        <textarea matInput cols="100000" [formControlName]="bodyStructures.indexOf(structure)"
+                            placeholder="Descrição do Problema"></textarea>
                     </mat-form-field>
                 </mat-expansion-panel>
             </mat-accordion>
-            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}} devem ser respondidas</span>
+            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}}
+                devem ser respondidas</span>
             <div class="nextStep">
-                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn" class="btn-block btn-cancel">
+                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn"
+                    class="btn-block btn-cancel">
                     Anterior
                 </button>
                 <span class="spacer"></span>
-                <button mat-button mat-stroked-button [matTooltip]="invalids" (click)="validateForm(bsFormGroup,bodyStructures)" matTooltipPosition="before" *ngIf="!bsFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button mat-stroked-button [matTooltip]="invalids"
+                    (click)="validateForm(bsFormGroup,bodyStructures)" matTooltipPosition="before"
+                    *ngIf="!bsFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
-                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(bsFormGroup)" *ngIf="bsFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(bsFormGroup)"
+                    *ngIf="bsFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
             </div>
@@ -345,13 +418,15 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>Execução de uma tarefa ou ação por um indivíduo e envolvimento e envolvimento numa situação da vital</p>
+                    <p>Execução de uma tarefa ou ação por um indivíduo e envolvimento e envolvimento numa situação da
+                        vital</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p>P = DESEMPENHO EM ...</p>
                     <p>C = CAPACIDADE DE ...</p>
 
                     <p class="bold-font">Onde:</p>
-                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
+                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 -
+                        Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -378,14 +453,22 @@
 
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="capacityGrade">
                         <span class="bold-font grade grade-radio">C</span>
-                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -405,14 +488,22 @@
                     </div>
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="performanceGrade">
                         <span class="bold-font grade grade-radio">P</span>
-                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -433,11 +524,14 @@
 
                     <div fxLayoutAlign="start" class="general-grade" formArrayName="infoSource">
                         <span class="bold-font grade grade-radio">Fonte da informação</span>
-                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio" aria-label="Select an option">
+                        <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio"
+                            aria-label="Select an option">
                             <mat-radio-button color="warn" value="Anamnese">Anamnese</mat-radio-button>
-                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-radio-button>
+                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário
+                                relatado pelo paciente</mat-radio-button>
                             <mat-radio-button color="warn" value="Exame clínico">Exame clínico</mat-radio-button>
-                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica</mat-radio-button>
+                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica
+                            </mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -446,7 +540,8 @@
                             </mat-label>
                             <mat-select [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-select">
                                 <mat-option color="warn" value="Anamnese">Anamnese</mat-option>
-                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-option>
+                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário
+                                    relatado pelo paciente</mat-option>
                                 <mat-option color="warn" value="Exame clínico">Exame clínico</mat-option>
                                 <mat-option color="warn" value="Investigação técnica">Investigação técnica</mat-option>
                             </mat-select>
@@ -455,21 +550,27 @@
 
                     <mat-form-field class="textarea" appearance="fill" formArrayName="problemDescription">
                         <mat-label>Descrição do Problema (Opcional)</mat-label>
-                        <textarea matInput cols="100000" [formControlName]="activityAndParticipation.indexOf(aNp)" placeholder="Descrição do Problema"></textarea>
+                        <textarea matInput cols="100000" [formControlName]="activityAndParticipation.indexOf(aNp)"
+                            placeholder="Descrição do Problema"></textarea>
                     </mat-form-field>
                 </mat-expansion-panel>
             </mat-accordion>
 
-            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}} devem ser respondidas</span>
+            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}}
+                devem ser respondidas</span>
             <div class="nextStep">
-                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn" class="btn-block btn-cancel">
+                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn"
+                    class="btn-block btn-cancel">
                     Anterior
                 </button>
                 <span class="spacer"></span>
-                <button mat-button mat-stroked-button [matTooltip]="invalids" (click)="validateForm(apFormGroup,activityAndParticipation)" matTooltipPosition="before" *ngIf="!apFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button mat-stroked-button [matTooltip]="invalids"
+                    (click)="validateForm(apFormGroup,activityAndParticipation)" matTooltipPosition="before"
+                    *ngIf="!apFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
-                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(apFormGroup)" *ngIf="apFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(apFormGroup)"
+                    *ngIf="apFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
             </div>
@@ -487,12 +588,16 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>Constituem o ambiente físico, social e de atitudes em que as pessoas vivem e conduzem sua vida.</p>
+                    <p>Constituem o ambiente físico, social e de atitudes em que as pessoas vivem e conduzem sua vida.
+                    </p>
                     <p class="bold-font">Quanto estes fatores são facilitadores e/ou barreiras na sua vida... </p>
-                    <p>Você também pode classificar os fatores ambientais como um facilitador e uma barreira, se aplicável.</p>
+                    <p>Você também pode classificar os fatores ambientais como um facilitador e uma barreira, se
+                        aplicável.</p>
                     <p class="bold-font">Onde:</p>
-                    <p>+4 - Facilitador completo | +3 - Facilitador considerável | +2 - Facilitador moderado | +1 - Facilitador leve | 0 - Não há problema | 1 - Problema ligeiro |</p>
-                    <p>2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 - Não aplicável</p>
+                    <p>+4 - Facilitador completo | +3 - Facilitador considerável | +2 - Facilitador moderado | +1 -
+                        Facilitador leve | 0 - Não há problema | 1 - Problema ligeiro |</p>
+                    <p>2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 -
+                        Não aplicável</p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -512,25 +617,39 @@
                     <mat-divider></mat-divider>
 
                     <p class="bold-font">{{ factor.description }}</p>
-                    <p *ngIf="factor.inclusion != null"><span class="bold-font">Inclusões: </span>{{ factor.inclusion }}</p>
-                    <p *ngIf="factor.exclusion != null"><span class="bold-font">Exclusões: </span>{{ factor.exclusion }}</p>
+                    <p *ngIf="factor.inclusion != null"><span class="bold-font">Inclusões: </span>{{ factor.inclusion }}
+                    </p>
+                    <p *ngIf="factor.exclusion != null"><span class="bold-font">Exclusões: </span>{{ factor.exclusion }}
+                    </p>
 
                     <mat-divider></mat-divider>
 
                     <div class="general-grade" fxLayoutAlign="end" formArrayName="generalGrade">
                         <span class="bold-font grade grade-radio">Geral</span>
-                        <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio" aria-label="Select an option">
-                            <mat-radio-button color="warn" value="+4" matTooltip="Facilitador completo" matTooltipPosition="above">+4</mat-radio-button>
-                            <mat-radio-button color="warn" value="+3" matTooltip="Facilitador considerável" matTooltipPosition="above">+3</mat-radio-button>
-                            <mat-radio-button color="warn" value="+2" matTooltip="Facilitador moderado" matTooltipPosition="above">+2</mat-radio-button>
-                            <mat-radio-button color="warn" value="+1" matTooltip="Facilitador leve" matTooltipPosition="above">+1</mat-radio-button>
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema" matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro" matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado" matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave" matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo" matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado" matTooltipPosition="above">8</mat-radio-button>
-                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável" matTooltipPosition="above">9</mat-radio-button>
+                        <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio"
+                            aria-label="Select an option">
+                            <mat-radio-button color="warn" value="+4" matTooltip="Facilitador completo"
+                                matTooltipPosition="above">+4</mat-radio-button>
+                            <mat-radio-button color="warn" value="+3" matTooltip="Facilitador considerável"
+                                matTooltipPosition="above">+3</mat-radio-button>
+                            <mat-radio-button color="warn" value="+2" matTooltip="Facilitador moderado"
+                                matTooltipPosition="above">+2</mat-radio-button>
+                            <mat-radio-button color="warn" value="+1" matTooltip="Facilitador leve"
+                                matTooltipPosition="above">+1</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                                matTooltipPosition="above">0</mat-radio-button>
+                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                                matTooltipPosition="above">1</mat-radio-button>
+                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                                matTooltipPosition="above">2</mat-radio-button>
+                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                                matTooltipPosition="above">3</mat-radio-button>
+                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                                matTooltipPosition="above">4</mat-radio-button>
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                                matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
+                                matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -555,11 +674,14 @@
 
                     <div fxLayoutAlign="start" class="general-grade" formArrayName="infoSource">
                         <span class="bold-font grade grade-radio">Fonte da informação</span>
-                        <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio" aria-label="Select an option">
+                        <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio"
+                            aria-label="Select an option">
                             <mat-radio-button color="warn" value="Anamnese">Anamnese</mat-radio-button>
-                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-radio-button>
+                            <mat-radio-button color="warn" value="Questionário relatado pelo paciente">Questionário
+                                relatado pelo paciente</mat-radio-button>
                             <mat-radio-button color="warn" value="Exame clínico">Exame clínico</mat-radio-button>
-                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica</mat-radio-button>
+                            <mat-radio-button color="warn" value="Investigação técnica">Investigação técnica
+                            </mat-radio-button>
                         </mat-radio-group>
 
                         <mat-form-field class="grade-select">
@@ -568,7 +690,8 @@
                             </mat-label>
                             <mat-select [formControlName]="environmentalFactors.indexOf(factor)" class="grade-select">
                                 <mat-option color="warn" value="Anamnese">Anamnese</mat-option>
-                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário relatado pelo paciente</mat-option>
+                                <mat-option color="warn" value="Questionário relatado pelo paciente">Questionário
+                                    relatado pelo paciente</mat-option>
                                 <mat-option color="warn" value="Exame clínico">Exame clínico</mat-option>
                                 <mat-option color="warn" value="Investigação técnica">Investigação técnica</mat-option>
                             </mat-select>
@@ -577,27 +700,33 @@
 
                     <mat-form-field class="textarea" appearance="fill" formArrayName="problemDescription">
                         <mat-label>Descrição do Problema (Opcional)</mat-label>
-                        <textarea matInput cols="100000" [formControlName]="environmentalFactors.indexOf(factor)" placeholder="Descrição do Problema"></textarea>
+                        <textarea matInput cols="100000" [formControlName]="environmentalFactors.indexOf(factor)"
+                            placeholder="Descrição do Problema"></textarea>
                     </mat-form-field>
 
                 </mat-expansion-panel>
             </mat-accordion>
-            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}} devem ser respondidas</span>
+            <span #invalid fxLayoutAlign="center" *ngIf="invalids.length > 0" class="invalid">*As questões: {{invalids}}
+                devem ser respondidas</span>
             <div class="nextStep">
-                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn" class="btn-block btn-cancel">
+                <button mat-button mat-button matStepperPrevious mat-stroked-button color="warn"
+                    class="btn-block btn-cancel">
                     Anterior
                 </button>
                 <span class="spacer"></span>
-                <button mat-button mat-stroked-button [matTooltip]="invalids" (click)="validateForm(efFormGroup,environmentalFactors)" matTooltipPosition="before" *ngIf="!efFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button mat-stroked-button [matTooltip]="invalids"
+                    (click)="validateForm(efFormGroup,environmentalFactors)" matTooltipPosition="before"
+                    *ngIf="!efFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
-                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(efFormGroup)" *ngIf="efFormGroup.valid" color="warn" class="btn-block btn-next">
+                <button mat-button matStepperNext mat-stroked-button (click)="addAnswers(efFormGroup)"
+                    *ngIf="efFormGroup.valid" color="warn" class="btn-block btn-next">
                     Próximo
                 </button>
             </div>
         </form>
     </mat-step>
-   
+
     <mat-step>
         <ng-template matStepLabel>Revisão</ng-template>
         <div class="mb-5 flex" *ngIf="!loading">
@@ -613,7 +742,8 @@
             <hr>
             <div class="first-header">
                 <p><span class="bold-font">Paciente: </span>{{firstName}} {{lastName}}</p>
-                <p><span class="bold-font">Profissional: </span>{{ therapistData.firstName }} {{ therapistData.lastName }}</p>
+                <p><span class="bold-font">Profissional: </span>{{ therapistData.firstName }}
+                    {{ therapistData.lastName }}</p>
                 <p><span class="bold-font">Local: </span>{{ evaluation.location }}</p>
                 <p><span class="bold-font">Data: </span> {{ dateConversion(evaluation.date) }} </p>
             </div>
@@ -621,49 +751,211 @@
             <hr>
 
             <h4 matTooltip="{{stepFive}} ">{{stepFive}}</h4>
-            <div *ngFor="let question of bodyFunctions">
-                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
-                    <h5 class="p-2">{{ question.code }}.{{ getAnswerGrade(question).generalGrade }} - {{ question.title }}</h5>
-                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
-                    <p class="p-2" *ngIf="getAnswerGrade(question).problemDescription != undefined">Descrição do problema: {{ getAnswerGrade(question).problemDescription }}</p>
-                </div>
-            </div>
-
+            <table *ngFor="let question of bodyFunctions">
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>codigo</th>
+                    <th class="expanded-cell">descrição</th>
+                    <th class="bar-teste">0</th>
+                    <th class="bar-teste">1</th>
+                    <th class="bar-teste">2</th>
+                    <th class="bar-teste">3</th>
+                    <th class="bar-teste">4</th>
+                    <th class="bar-teste">8</th>
+                    <th class="bar-teste">9</th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>{{ question.code }}.{{getAnswerGrade(question).generalGrade}}</th>
+                    <th>{{ question.title }}</th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,0) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,1) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,2) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,3) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,4) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8" || getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8" || getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8" || getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8" || getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8" || getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "9"'></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "8"' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).generalGrade == "9"' class="colored-bar"></th>
+                </tr>
+            </table>
+           
             <hr>
             <h4 matTooltip="{{stepFour}} ">{{stepFour}}</h4>
-            <div *ngFor="let question of bodyStructures">
-                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
-                    <h5 class="p-2">{{ question.code }}.{{ getAnswerGrade(question).locationGrade }}.{{ getAnswerGrade(question).natureGrade }}.{{ getAnswerGrade(question).extensionGrade }} - {{ question.title }}</h5>
-                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
-                    <p class="p-2" *ngIf="getAnswerGrade(question).problemDescription != undefined">Descrição do problema (opcional): {{ getAnswerGrade(question).problemDescription }}</p>
-                </div>
-            </div>
-            
+            <table *ngFor="let question of bodyStructures">
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>codigo</th>
+                    <th class="expanded-cell">descrição</th>
+                    <th class="bar-teste">0</th>
+                    <th class="bar-teste">1</th>
+                    <th class="bar-teste">2</th>
+                    <th class="bar-teste">3</th>
+                    <th class="bar-teste">4</th>
+                    <th class="bar-teste">5</th>
+                    <th class="bar-teste">6</th>
+                    <th class="bar-teste">7</th>
+                    <th class="bar-teste">8</th>
+                    <th class="bar-teste">9</th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>{{ question.code }}.{{ getAnswerGrade(question).locationGrade }}{{ getAnswerGrade(question).natureGrade }}{{ getAnswerGrade(question).extensionGrade }}</th>
+                    <th>{{ question.title }}</th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,0) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,1) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,2) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,3) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,4) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,5) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,6) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,7) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8 || getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 8' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).locationGrade == 9' class="colored-bar"></th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th class="expand" colspan="2"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,0) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,1) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,2) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,3) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,4) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,5) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,6) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).natureGrade,7) && lessThan(getAnswerGrade(question).natureGrade,7)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8 || getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 8' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).natureGrade == 9' class="colored-bar"></th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th class="expand" colspan="2"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).extensionGrade,0) && lessThan(getAnswerGrade(question).extensionGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).extensionGrade,1) && lessThan(getAnswerGrade(question).extensionGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).extensionGrade,2) && lessThan(getAnswerGrade(question).extensionGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).extensionGrade,3) && lessThan(getAnswerGrade(question).extensionGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).extensionGrade,4) && lessThan(getAnswerGrade(question).extensionGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8 || getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 8' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).extensionGrade == 9' class="colored-bar"></th>
+                </tr>
+            </table>
+
             <hr>
+
             <h4 matTooltip="{{stepThree}} ">{{stepThree}}</h4>
-            <div *ngFor="let question of activityAndParticipation ">
-                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
-                    <h5 class="p-2">{{ question.code }}.{{ getAnswerGrade(question).capacityGrade }}.{{ getAnswerGrade(question).performanceGrade }} - {{ question.title }}</h5>
-                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
-                    <p class="p-2" *ngIf="getAnswerGrade(question).problemDescription != undefined">Descrição do problema: {{ getAnswerGrade(question).problemDescription }}</p>
-                </div>
-            </div>
-            
+            <table *ngFor="let question of activityAndParticipation">
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>codigo</th>
+                    <th class="expanded-cell">descrição</th>
+                    <th class="bar-teste">0</th>
+                    <th class="bar-teste">1</th>
+                    <th class="bar-teste">2</th>
+                    <th class="bar-teste">3</th>
+                    <th class="bar-teste">4</th>
+                    <th class="bar-teste">8</th>
+                    <th class="bar-teste">9</th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>{{ question.code }}.{{ getAnswerGrade(question).capacityGrade }}{{ getAnswerGrade(question).performanceGrade }}</th>
+                    <th>{{ question.title }}</th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,0) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,1) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,2) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,3) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,4) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8 || getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8 || getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8 || getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8 || getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8 || getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 8' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).capacityGrade == 9' class="colored-bar"></th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th class="expand" colspan="2"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).performanceGrade,0) && lessThan(getAnswerGrade(question).performanceGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).performanceGrade,1) && lessThan(getAnswerGrade(question).performanceGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).performanceGrade,2) && lessThan(getAnswerGrade(question).performanceGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).performanceGrade,3) && lessThan(getAnswerGrade(question).performanceGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='gratherThan(getAnswerGrade(question).performanceGrade,4) && lessThan(getAnswerGrade(question).performanceGrade,4)' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8 || getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8 || getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8 || getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8 || getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8 || getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 9'></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 8' class="colored-bar"></th>
+                    <th *ngIf='getAnswerGrade(question).performanceGrade == 9' class="colored-bar"></th>
+                </tr>
+            </table>
+
             <hr>
+
             <h4 matTooltip="{{stepTwo}}">{{stepTwo}}</h4>
-            <div *ngFor="let question of environmentalFactors">
-                <div class="border rounded mb-3" *ngIf=" getAnswerGrade(question) !=undefined ">
-                    <h5 class="p-2">{{ question.code }}.{{ getAnswerGrade(question).generalGrade }} - {{ question.title }}</h5>
-                    <p class="p-2">Fonte da informação: {{ getAnswerGrade(question).infoSource }}</p>
-                    <p class="p-2" *ngIf="getAnswerGrade(question).problemDescription != undefined">Descrição do problema: {{ getAnswerGrade(question).problemDescription }}</p>
-                </div>
-            </div>
-            
-            
+
+            <table *ngFor="let question of environmentalFactors">
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>codigo</th>
+                    <th class="expanded-cell">descrição</th>
+                    <th class="bar-teste">+4</th>
+                    <th class="bar-teste">+3</th>
+                    <th class="bar-teste">+2</th>
+                    <th class="bar-teste">+1</th>
+                    <th class="bar-teste">0</th>
+                    <th class="bar-teste">1</th>
+                    <th class="bar-teste">2</th>
+                    <th class="bar-teste">3</th>
+                    <th class="bar-teste">4</th>
+                    <th class="bar-teste">8</th>
+                    <th class="bar-teste">9</th>
+                </tr>
+                <tr *ngIf="getAnswerGrade(question) !=undefined">
+                    <th>{{ question.code }}.{{ getAnswerGrade(question).generalGrade }}</th>
+                    <th>{{ question.title }}</th>
+                    <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+4") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
+                    <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+3") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
+                    <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+2") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
+                    <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+1") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,"0"), "colored-bar-light":lessThan(getAnswerGrade(question).generalGrade,"0")}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,1) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,2) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,3) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,4) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
+                    <th [ngClass]='{"colored-bar":getAnswerGrade(question).generalGrade == "9"}'></th>
+                    <th [ngClass]='{"colored-bar":getAnswerGrade(question).generalGrade == "8"}'></th>
+                </tr>
+            </table>
+
             <div id="rectangle"> </div>
-    <p style="text-align: center; font-weight: bold;"> Assinatura e carimbo do profissional </p>
-    <p style="text-align: center;"> {{ therapistData.firstName }} {{ therapistData.lastName }} </p>
-    <p style="text-align: center;"> {{regionalID}} - {{therapistData.professionalData.professionalID}} </p>
+            <p style="text-align: center; font-weight: bold;"> Assinatura e carimbo do profissional </p>
+            <p style="text-align: center;"> {{ therapistData.firstName }} {{ therapistData.lastName }} </p>
+            <p style="text-align: center;"> {{regionalID}} - {{therapistData.professionalData.professionalID}} </p>
         </div>
     </mat-step>
 </mat-horizontal-stepper>
