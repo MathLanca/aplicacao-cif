@@ -17,6 +17,27 @@ h3 {
     width: 140px;
 }
 
+.expanded-cell{
+    width: 100%;
+}
+
+table{
+    border-spacing: 10px;
+}
+
+
+.expand{
+    height: 30px;    
+}
+
+.colored-bar{
+    background-color: #E4022D;
+}
+
+.colored-bar-light{
+    background-color: #e0788b;
+}
+
 ::ng-deep .mat-accordion {
     flex-direction: column !important;
 }

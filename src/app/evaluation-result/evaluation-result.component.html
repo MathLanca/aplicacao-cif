@@ -19,16 +19,162 @@
     <hr>
     <h4 matTooltip="Informações a respeito da avaliação"> </h4>
 
+    <!-- FUNÇÕES DO CORPO -->
+    <table *ngFor="let answer of evaluation.answers">
+        <br *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'">
+        
+        <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'">
+            <th>codigo</th>
+            <th class="expanded-cell">descrição</th>
+            <th class="bar-teste">0</th>
+            <th class="bar-teste">1</th>
+            <th class="bar-teste">2</th>
+            <th class="bar-teste">3</th>
+            <th class="bar-teste">4</th>
+            <th class="bar-teste">8</th>
+            <th class="bar-teste">9</th>
+        </tr>
 
-    <div *ngFor="let answer of evaluation.answers">
-        <div class="border rounded mb-3">
-            <h5 *ngIf="answer.generalGrade != null">{{ answer.questionCode}}.{{answer.generalGrade}} - {{ answer.questionDescription}}</h5>
-            <h5 *ngIf="answer.locationGrade != null">{{ answer.questionCode}}.{{answer.locationGrade}}.{{answer.extensionGrade}}.{{answer.natureGrade}} - {{ answer.questionDescription}}</h5>
-            <h5 *ngIf="answer.capacityGrade != null">{{ answer.questionCode}}.{{answer.capacityGrade}}.{{answer.performanceGrade}} - {{ answer.questionDescription}}</h5>
-            <p class="p-2" *ngIf="answer.infoSource != null">Fonte da informação: {{answer.infoSource}} </p>
-            <p class="p-2" *ngIf="answer.problemDescription != null ">Detalhes: {{answer.problemDescription}} </p>
-        </div>
-    </div>
+        <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'" matTooltip="FUNÇÕES DO CORPO">
+            <th>{{ answer.questionCode }}.{{ answer.generalGrade }}</th>
+            <th>{{ answer.questionDescription }}</th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.generalGrade,"4"),"c":gratherThan(answer.generalGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,1) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,2) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,3) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,4) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":answer.generalGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.generalGrade == "9"}'></th>
+        </tr>
+
+        <!-- ESTRUTURA DO CORPO -->
+        <br *ngIf="answer.locationGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'">
+
+        <tr *ngIf="answer.locationGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'">
+            <th>codigo</th>
+            <th class="expanded-cell">descrição</th>
+            <th class="bar-teste">0</th>
+            <th class="bar-teste">1</th>
+            <th class="bar-teste">2</th>
+            <th class="bar-teste">3</th>
+            <th class="bar-teste">4</th>
+            <th class="bar-teste">5</th>
+            <th class="bar-teste">6</th>
+            <th class="bar-teste">7</th>
+            <th class="bar-teste">8</th>
+            <th class="bar-teste">9</th>
+        </tr>
+
+        <tr *ngIf="answer.locationGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'" matTooltip="ESTRUTURA DO CORPO">
+            <th>{{ answer.questionCode }}.{{ answer.locationGrade }}{{ answer.natureGrade }}{{ answer.extensionGrade }}</th>
+            <th>{{ answer.questionDescription }}</th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.locationGrade,"7"),"c":gratherThan(answer.locationGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,1) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,2) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,3) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,4) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,5) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,6) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,7) && lessThan(answer.locationGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":answer.locationGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.locationGrade == "9"}'></th>
+        </tr>
+        <tr *ngIf="answer.natureGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'" matTooltip="ESTRUTURA DO CORPO">
+            <th class="expand" colspan="2"></th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.natureGrade,"7"),"c":gratherThan(answer.natureGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,1) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,2) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,3) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,4) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,5) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,6) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.natureGrade,7) && lessThan(answer.natureGrade,7)}'></th>
+            <th [ngClass]='{"colored-bar":answer.natureGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.natureGrade == "9"}'></th>
+        </tr>
+        <tr *ngIf="answer.extensionGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'" matTooltip="ESTRUTURA DO CORPO">
+            <th class="expand" colspan="2"></th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.extensionGrade,"4"),"c":gratherThan(answer.extensionGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.extensionGrade,1) && lessThan(answer.extensionGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.extensionGrade,2) && lessThan(answer.extensionGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.extensionGrade,3) && lessThan(answer.extensionGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.extensionGrade,4) && lessThan(answer.extensionGrade,4)}'></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th [ngClass]='{"colored-bar":answer.extensionGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.extensionGrade == "9"}'></th>
+        </tr>
+
+        <br *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'">
+
+        <tr *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'">
+            <th>codigo</th>
+            <th class="expanded-cell">descrição</th>
+            <th class="bar-teste">0</th>
+            <th class="bar-teste">1</th>
+            <th class="bar-teste">2</th>
+            <th class="bar-teste">3</th>
+            <th class="bar-teste">4</th>
+            <th class="bar-teste">8</th>
+            <th class="bar-teste">9</th>
+        </tr>
+        <tr *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'" matTooltip="ATIVIDADE E PARTICIPAÇÃO">
+            <th>{{ answer.questionCode }}.{{ answer.capacityGrade }}{{ answer.performanceGrade }}</th>
+            <th>{{ answer.questionDescription }}</th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.capacityGrade,"4"),"c":gratherThan(answer.capacityGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.capacityGrade,1) && lessThan(answer.capacityGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.capacityGrade,2) && lessThan(answer.capacityGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.capacityGrade,3) && lessThan(answer.capacityGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.capacityGrade,4) && lessThan(answer.capacityGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":answer.capacityGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.capacityGrade == "9"}'></th>
+        </tr>
+        <tr *ngIf="answer.performanceGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'" matTooltip="ATIVIDADE E PARTICIPAÇÃO">
+            <th class="expand" colspan="2"></th>
+            <th [ngClass]='{"colored-bar":lessThan(answer.performanceGrade,"4"),"c":gratherThan(answer.performanceGrade,"8")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.performanceGrade,1) && lessThan(answer.performanceGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.performanceGrade,2) && lessThan(answer.performanceGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.performanceGrade,3) && lessThan(answer.performanceGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.performanceGrade,4) && lessThan(answer.performanceGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":answer.performanceGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.performanceGrade == "9"}'></th>
+        </tr>
+
+        <br *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'">
+
+        <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'">
+            <th>código</th>
+            <th class="expanded-cell">descrição</th>
+            <th class="bar-teste">+4</th>
+            <th class="bar-teste">+3</th>
+            <th class="bar-teste">+2</th>
+            <th class="bar-teste">+1</th>
+            <th class="bar-teste">0</th>
+            <th class="bar-teste">1</th>
+            <th class="bar-teste">2</th>
+            <th class="bar-teste">3</th>
+            <th class="bar-teste">4</th>
+            <th class="bar-teste">8</th>
+            <th class="bar-teste">9</th>
+        </tr>
+        <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'" matTooltip="FATORES AMBIENTAIS">
+            <th>{{ answer.questionCode }}.{{ answer.generalGrade }}</th>
+            <th>{{ answer.questionDescription }}</th>
+            <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+4") && lessThan(answer.generalGrade,"+4")}'></th>
+            <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+3") && lessThan(answer.generalGrade,"+4")}'></th>
+            <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+2") && lessThan(answer.generalGrade,"+4")}'></th>
+            <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+1") && lessThan(answer.generalGrade,"+4")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,"0"), "colored-bar-light":lessThan(answer.generalGrade,"0")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,1) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,2) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,3) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,4) && lessThan(answer.generalGrade,4)}'></th>
+            <th [ngClass]='{"colored-bar":answer.generalGrade == "9"}'></th>
+            <th [ngClass]='{"colored-bar":answer.generalGrade == "8"}'></th>
+        </tr>
+    </table>
+
     <br><br>
     <div id="rectangle"> </div>
     <p style="text-align: center; font-weight: bold;"> Assinatura e carimbo do profissional </p>

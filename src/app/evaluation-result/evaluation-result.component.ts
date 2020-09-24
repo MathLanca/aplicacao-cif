@@ -60,20 +60,45 @@ export class EvaluationResultComponent implements OnInit {
     .subscribe(
       data => {
         this.evaluation = data;
+        console.log(this.evaluation.answers);
         this.loaded = true;
         this.therapistService.retriveEvaluationTherapistData(this.evaluation.therapistId)
         .subscribe(
           data => {
             this.evaluationTherapistData = data;
-            console.log(this.evaluationTherapistData);
             this.regionalID = this.object[this.evaluationTherapistData.professionalData.occupation];
-            console.log("Ocupacao profissional " + this.regionalID);
             this.loaded = true;
           }
         ); 
       }
     ); 
     
+  }
+
+  gratherThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA <= numB;
+      }
+    }
+    return numA >= numB
+  }
+
+  lessThan(numA:any,numB:any,){
+    if(typeof numA == "string" && numA.includes("+")){
+        numA = Number(numA);
+        numA = numA * -1;
+      if(typeof numB == "string" && numB.includes("+")){
+        numB = Number(numB);
+        numB = numB * -1;
+        return numA >= numB;
+      }
+    }
+    return numA <= numB
   }
 
   download(){
