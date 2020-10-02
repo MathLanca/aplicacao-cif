@@ -11,14 +11,15 @@ import { AuthService } from '../service/auth.service';
 import { SessionService } from '../service/session.service';
 import { Router } from '@angular/router';
 import { AppDateAdapter, APP_DATE_FORMATS } from '../shared/format-datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   providers: [
-    { provide: DateAdapter, useClass: AppDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+    {provide: DateAdapter, useClass: AppDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
   ]
 })
 
@@ -67,9 +68,6 @@ export class RegisterComponent implements OnInit {
   'Psicologia':'CRP',
   'Terapia Ocupacional':'COFFITO'
 };
-
-  
-  
 
   genders: Gender[] = [
     { value: 'F', viewValue: 'Feminino' },

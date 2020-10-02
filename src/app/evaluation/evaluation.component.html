@@ -1,7 +1,7 @@
 <div *ngIf="!loaded" class="spinner" fxLayoutAlign="center">
     <mat-spinner></mat-spinner>
 </div>
-<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="false" #stepper>
+<mat-horizontal-stepper *ngIf="loaded" class="main-stepper" linear="true" #stepper>
     <mat-step fxLayoutAlign="center" [stepControl]="ieFormGroup">
         <form [formGroup]="ieFormGroup" autocomplete="off">
             <ng-template matStepLabel>
@@ -55,8 +55,8 @@
                     <p>Funções fisiológicas dos sistema corporais (incluindo as funções psicológicas)</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p class="bold-font">Onde:</p>
-                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 -
-                        Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
+                    <p>0 - Nenhuma deficiência | 1 - Deficiência leve | 2 - Deficiência moderada | 3 - Deficiência grave | 4 -
+                        Deficiência completa | 8 - Não especificado | 9 - Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -88,15 +88,15 @@
                         <span class="bold-font grade grade-radio">Geral</span>
                         <mat-radio-group [formControlName]="bodyFunctions.indexOf(function)" class="grade-radio"
                             aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                            <mat-radio-button color="warn" value="0" matTooltip="Nenhuma deficiência"
                                 matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                            <mat-radio-button color="warn" value="1" matTooltip="Deficiência leve"
                                 matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                            <mat-radio-button color="warn" value="2" matTooltip="Deficiência moderada"
                                 matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                            <mat-radio-button color="warn" value="3" matTooltip="Deficiência grave"
                                 matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                            <mat-radio-button color="warn" value="4" matTooltip="Deficiência completa"
                                 matTooltipPosition="above">4</mat-radio-button>
                             <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
                                 matTooltipPosition="above">8</mat-radio-button>
@@ -109,11 +109,11 @@
                                 Geral
                             </mat-label>
                             <mat-select [formControlName]="bodyFunctions.indexOf(function)" class="grade-select">
-                                <mat-option value="0">0 - Não há problema</mat-option>
-                                <mat-option value="1">1 - Problema ligeiro</mat-option>
-                                <mat-option value="2">2 - Problema moderado</mat-option>
-                                <mat-option value="3">3 - Problema grave</mat-option>
-                                <mat-option value="4">4 - Problema completo</mat-option>
+                                <mat-option value="0">0 - Nenhuma deficiência</mat-option>
+                                <mat-option value="1">1 - Deficiência leve</mat-option>
+                                <mat-option value="2">2 - Deficiência moderada</mat-option>
+                                <mat-option value="3">3 - Deficiência grave</mat-option>
+                                <mat-option value="4">4 - Deficiência completa</mat-option>
                                 <mat-option value="8">8 - Não especificado</mat-option>
                                 <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
@@ -186,18 +186,18 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>As estruturas do corpo são partes anatômicas do corpo, como, orgãos, membros e seus componentes
+                    <p>As estruturas corporais são partes anatômicas do corpo, como os órgãos, membros e seus componentes.
                     </p>
-                    <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
+                    <p>As deficiências são problemas nas funções ou estruturas do corpo como um desvio ou perda significativa.</p>
                     <p class="bold-font">Onde:</p>
                     <p>Extensão | 0 - Nenhuma deficiência | 1 - Deficiência leve | 2 - Deficiência moderada | 3 -
                         Deficiência grave | 4 - Deficiência completa | 8 - Não especificada | 9 - Não aplicável </p>
                     <p>Natureza | 0 - Nenhuma mudança na estrutura | 1 - Ausência total | 2 - Ausência parcial | 3 -
-                        Parte adicional | 4 - Dimensões aberrantes | 5 - Descontinuidade | 6 - Posição desviada | 7 -
+                        Parte adicional | 4 - Dimensões aberrantes | 5 - Descontinuidade | 6 - Desvio de posição | 7 -
                         Mudanças qualitativas na estrutura, incluindo acúmulo de fluído | 8 - Não especificada | 9 - Não
                         aplicável </p>
                     <p>Localização | 0 - Mais de uma região | 1 - Direita | 2 - Esquerda | 3 - Ambos os lados | 4 -
-                        Parte dianteira | 5 - Parte traseira | 6 - Proximal | 7 - Distal | 8 - Não especificada | 9 -
+                        Parte anterior | 5 - Parte posterior | 6 - Proximal | 7 - Distal | 8 - Não especificada | 9 -
                         Não aplicável </p>
                 </mat-card-subtitle>
             </mat-card>
@@ -418,15 +418,22 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>Execução de uma tarefa ou ação por um indivíduo e envolvimento e envolvimento numa situação da
-                        vital</p>
+                    <p>Atividade é a execução de uma tarefa ou ação por um indivíduo.</p>
+                    <p>Participação é o ato de se envolver em uma situação vital.</p>
+                    <p>Limitação da atividade são dificuldades que o indivíduo pode ter para executar uma atividade.</p>
+                    <p>Restrições de participação são problemas que um indivíduo pode enfrentar ao se envolver em situações vitais.</p>
                     <p class="bold-font">Quanto prejuízo a pessoa tem em ...</p>
                     <p>P = DESEMPENHO EM ...</p>
                     <p>C = CAPACIDADE DE ...</p>
 
                     <p class="bold-font">Onde:</p>
-                    <p>0 - Não há problema | 1 - Problema ligeiro | 2 - Problema moderado | 3 - Problema grave | 4 -
-                        Problema completo | 8 - Não especificado | 9 - Não aplicável </p>
+                    <p>XXX.0 NENHUMA dificuldade (nenhuma, ausente ou escassa, ...) 0 - 4%</p>
+                    <p>XXX.1 Dificuldade LEVE (ligeira, baixa, ....) 5 – 24 %</p>
+                    <p>XXX.2 Dificuldade MODERADA (média, regular, ...) 25 – 49 %</p>
+                    <p>XXX.3 Dificuldade GRAVE (alta, extrema, ...) 50 – 95%</p>
+                    <p>XXX.4 Dificuldade COMPLETA (total, ...) 96 – 100%</p>
+                    <p>XXX.8 Não especificada</p>
+                    <p>XXX.9 Não aplicável</p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -455,17 +462,17 @@
                         <span class="bold-font grade grade-radio">C</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio"
                             aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                            <mat-radio-button color="warn" value="0" matTooltip="NENHUMA dificuldade "
                                 matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                            <mat-radio-button color="warn" value="1" matTooltip="Dificuldade LEVE"
                                 matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                            <mat-radio-button color="warn" value="2" matTooltip="Dificuldade MODERADA"
                                 matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                            <mat-radio-button color="warn" value="3" matTooltip="Dificuldade GRAVE"
                                 matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                            <mat-radio-button color="warn" value="4" matTooltip="Dificuldade COMPLETA"
                                 matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada"
                                 matTooltipPosition="above">8</mat-radio-button>
                             <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
                                 matTooltipPosition="above">9</mat-radio-button>
@@ -476,12 +483,12 @@
                                 C
                             </mat-label>
                             <mat-select [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-select">
-                                <mat-option value="0">0 - Não há problema</mat-option>
-                                <mat-option value="1">1 - Problema ligeiro</mat-option>
-                                <mat-option value="2">2 - Problema moderado</mat-option>
-                                <mat-option value="3">3 - Problema grave</mat-option>
-                                <mat-option value="4">4 - Problema completo</mat-option>
-                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="0">0 - NENHUMA dificuldade</mat-option>
+                                <mat-option value="1">1 - Dificuldade LEVE</mat-option>
+                                <mat-option value="2">2 - Dificuldade MODERADA</mat-option>
+                                <mat-option value="3">3 - Dificuldade GRAVE</mat-option>
+                                <mat-option value="4">4 - Dificuldade COMPLETA</mat-option>
+                                <mat-option value="8">8 - Não especificada</mat-option>
                                 <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -490,17 +497,17 @@
                         <span class="bold-font grade grade-radio">P</span>
                         <mat-radio-group [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-radio"
                             aria-label="Select an option">
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                            <mat-radio-button color="warn" value="0" matTooltip="NENHUMA dificuldade "
                                 matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                            <mat-radio-button color="warn" value="1" matTooltip="Dificuldade LEVE"
                                 matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                            <mat-radio-button color="warn" value="2" matTooltip="Dificuldade MODERADA"
                                 matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                            <mat-radio-button color="warn" value="3" matTooltip="Dificuldade GRAVE"
                                 matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                            <mat-radio-button color="warn" value="4" matTooltip="Dificuldade COMPLETA"
                                 matTooltipPosition="above">4</mat-radio-button>
-                            <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
+                            <mat-radio-button color="warn" value="8" matTooltip="Não especificada"
                                 matTooltipPosition="above">8</mat-radio-button>
                             <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
                                 matTooltipPosition="above">9</mat-radio-button>
@@ -511,12 +518,12 @@
                                 P
                             </mat-label>
                             <mat-select [formControlName]="activityAndParticipation.indexOf(aNp)" class="grade-select">
-                                <mat-option value="0">0 - Não há problema</mat-option>
-                                <mat-option value="1">1 - Problema ligeiro</mat-option>
-                                <mat-option value="2">2 - Problema moderado</mat-option>
-                                <mat-option value="3">3 - Problema grave</mat-option>
-                                <mat-option value="4">4 - Problema completo</mat-option>
-                                <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="0">0 - NENHUMA dificuldade</mat-option>
+                                <mat-option value="1">1 - Dificuldade LEVE</mat-option>
+                                <mat-option value="2">2 - Dificuldade MODERADA</mat-option>
+                                <mat-option value="3">3 - Dificuldade GRAVE</mat-option>
+                                <mat-option value="4">4 - Dificuldade COMPLETA</mat-option>
+                                <mat-option value="8">8 - Não especificada</mat-option>
                                 <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -588,16 +595,20 @@
                     </p>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <p>Constituem o ambiente físico, social e de atitudes em que as pessoas vivem e conduzem sua vida.
-                    </p>
-                    <p class="bold-font">Quanto estes fatores são facilitadores e/ou barreiras na sua vida... </p>
-                    <p>Você também pode classificar os fatores ambientais como um facilitador e uma barreira, se
-                        aplicável.</p>
-                    <p class="bold-font">Onde:</p>
-                    <p>+4 - Facilitador completo | +3 - Facilitador considerável | +2 - Facilitador moderado | +1 -
-                        Facilitador leve | 0 - Não há problema | 1 - Problema ligeiro |</p>
-                    <p>2 - Problema moderado | 3 - Problema grave | 4 - Problema completo | 8 - Não especificado | 9 -
-                        Não aplicável</p>
+                    <p>Constituem o ambiente físico, social e de atitudes em que as pessoas vivem e conduzem sua vida.</p>
+                    <p>XXX.0 NENHUMA barreira (nenhuma, ausente ou escassa, ...) 0 - 4%</p>
+                    <p>XXX.1 Barreira LEVE (leve, baixa, ....) 5 – 24 %</p>
+                    <p>XXX.2 Barreira MODERADA (média, regular, ...) 25 – 49 %</p>
+                    <p>XXX.3 Barreira GRAVE (alta, extrema, ...) 50 – 95%</p>
+                    <p>XXX.4 Barreira COMPLETA (total, ...) 96 – 100%</p>
+                    <p>XXX+0 NENHUM facilitador (nenhum, ausente ou escassa, ...) 0 - 4%</p>
+                    <p>XXX+1 Facilitador LEVE (leve, baixo, ...) 5 - 24%</p>
+                    <p>XXX+2 Facilitador MODERADO (médio, regular, ...) 25 – 49%</p>
+                    <p>XXX+3 Facilitador CONSIDERÁVEL (alto, extremo, ...) 50 - 95%</p>
+                    <p>XXX+4 Facilitador COMPLETO (total, ...) 86 – 100%</p>
+                    <p>XXX.8 Barreira não especificada</p>
+                    <p>XXX+8 Facilitador não especificado</p>
+                    <p>XXX.9 Não aplicável</p>
                 </mat-card-subtitle>
             </mat-card>
 
@@ -628,26 +639,30 @@
                         <span class="bold-font grade grade-radio">Geral</span>
                         <mat-radio-group [formControlName]="environmentalFactors.indexOf(factor)" class="grade-radio"
                             aria-label="Select an option">
-                            <mat-radio-button color="warn" value="+4" matTooltip="Facilitador completo"
+                            <mat-radio-button color="warn" value="+4" matTooltip="Facilitador COMPLETO"
                                 matTooltipPosition="above">+4</mat-radio-button>
-                            <mat-radio-button color="warn" value="+3" matTooltip="Facilitador considerável"
+                            <mat-radio-button color="warn" value="+3" matTooltip="Facilitador CONSIDERÁVEL"
                                 matTooltipPosition="above">+3</mat-radio-button>
-                            <mat-radio-button color="warn" value="+2" matTooltip="Facilitador moderado"
+                            <mat-radio-button color="warn" value="+2" matTooltip="Facilitador MODERADO"
                                 matTooltipPosition="above">+2</mat-radio-button>
                             <mat-radio-button color="warn" value="+1" matTooltip="Facilitador leve"
                                 matTooltipPosition="above">+1</mat-radio-button>
-                            <mat-radio-button color="warn" value="0" matTooltip="Não há problema"
+                            <mat-radio-button color="warn" value="+0" matTooltip="NENHUM facilitador"
+                                matTooltipPosition="above">+0</mat-radio-button>
+                            <mat-radio-button color="warn" value="0" matTooltip="NENHUMA barreira"
                                 matTooltipPosition="above">0</mat-radio-button>
-                            <mat-radio-button color="warn" value="1" matTooltip="Problema ligeiro"
+                            <mat-radio-button color="warn" value="1" matTooltip="Barreira LEVE"
                                 matTooltipPosition="above">1</mat-radio-button>
-                            <mat-radio-button color="warn" value="2" matTooltip="Problema moderado"
+                            <mat-radio-button color="warn" value="2" matTooltip="Barreira MODERADA"
                                 matTooltipPosition="above">2</mat-radio-button>
-                            <mat-radio-button color="warn" value="3" matTooltip="Problema grave"
+                            <mat-radio-button color="warn" value="3" matTooltip="Barreira GRAVE"
                                 matTooltipPosition="above">3</mat-radio-button>
-                            <mat-radio-button color="warn" value="4" matTooltip="Problema completo"
+                            <mat-radio-button color="warn" value="4" matTooltip="Barreira COMPLETA"
                                 matTooltipPosition="above">4</mat-radio-button>
                             <mat-radio-button color="warn" value="8" matTooltip="Não especificado"
                                 matTooltipPosition="above">8</mat-radio-button>
+                            <mat-radio-button color="warn" value="+8" matTooltip="Facilitador não especificado"
+                                matTooltipPosition="above">+8</mat-radio-button>
                             <mat-radio-button color="warn" value="9" matTooltip="Não aplicável"
                                 matTooltipPosition="above">9</mat-radio-button>
                         </mat-radio-group>
@@ -657,20 +672,18 @@
                                 Geral
                             </mat-label>
                             <mat-select [formControlName]="environmentalFactors.indexOf(factor)" class="grade-select">
-                                <mat-option value="+4">+4 - Facilitador completo</mat-option>
-                                <mat-option value="+3">+3 - Facilitador considerável</mat-option>
-                                <mat-option value="+2">+2 - Facilitador moderado</mat-option>
+                                <mat-option value="+4">+4 - Facilitador COMPLETO</mat-option>
+                                <mat-option value="+3">+3 - Facilitador CONSIDERÁVEL</mat-option>
+                                <mat-option value="+2">+2 - Facilitador MODERADO</mat-option>
                                 <mat-option value="+1">+1 - Facilitador leve</mat-option>
-                                <mat-option value="0">0 - Não há problema</mat-option>
-                                <mat-option value="+1">+1 - Facilitador leve</mat-option>
-                                <mat-option value="1">1 - Problema ligeiro</mat-option>
-                                <mat-option value="+2">+2 - Facilitador moderado</mat-option>
-                                <mat-option value="2">2 - Problema moderado</mat-option>
-                                <mat-option value="3">3 - Problema grave</mat-option>
-                                <mat-option value="+3">+3 - Facilitador considerável</mat-option>
-                                <mat-option value="+4">+4 - Facilitador completo</mat-option>
-                                <mat-option value="4.5">4 - Problema completo</mat-option>
+                                <mat-option value="+0">+0 - NENHUM facilitador</mat-option>
+                                <mat-option value="0">0 - NENHUMA barreira</mat-option>
+                                <mat-option value="1">1 - Barreira LEVE</mat-option>
+                                <mat-option value="2">2 - Barreira MODERADA</mat-option>
+                                <mat-option value="3">3 - Barreira GRAVE</mat-option>
+                                <mat-option value="4">4 - Barreira COMPLETA</mat-option>
                                 <mat-option value="8">8 - Não especificado</mat-option>
+                                <mat-option value="+8">+8 - Facilitador não especificado</mat-option>
                                 <mat-option value="9">9 - Não aplicável</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -767,7 +780,7 @@
                     <th class="bar-teste">9</th>
                 </tr>
                 <tr *ngIf="getAnswerGrade(question) !=undefined">
-                    <th>{{ question.code }}.{{getAnswerGrade(question).generalGrade}}</th>
+                    <th>{{ question.code }}.<span class="colored-font">{{getAnswerGrade(question).generalGrade}}</span></th>
                     <th>{{ question.title }}</th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,0) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).generalGrade,1) && lessThan(getAnswerGrade(question).generalGrade,4)' class="colored-bar"></th>
@@ -803,7 +816,7 @@
                     <th class="bar-teste">9</th>
                 </tr>
                 <tr *ngIf="getAnswerGrade(question) !=undefined">
-                    <th>{{ question.code }}.{{ getAnswerGrade(question).locationGrade }}{{ getAnswerGrade(question).natureGrade }}{{ getAnswerGrade(question).extensionGrade }}</th>
+                    <th>{{ question.code }}.<span class="colored-font">{{ getAnswerGrade(question).locationGrade }}{{ getAnswerGrade(question).natureGrade }}{{ getAnswerGrade(question).extensionGrade }}</span></th>
                     <th>{{ question.title }}</th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,0) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).locationGrade,1) && lessThan(getAnswerGrade(question).locationGrade,7)' class="colored-bar"></th>
@@ -884,7 +897,7 @@
                     <th class="bar-teste">9</th>
                 </tr>
                 <tr *ngIf="getAnswerGrade(question) !=undefined">
-                    <th>{{ question.code }}.{{ getAnswerGrade(question).capacityGrade }}{{ getAnswerGrade(question).performanceGrade }}</th>
+                    <th>{{ question.code }}.<span class="colored-font">{{ getAnswerGrade(question).capacityGrade }}{{ getAnswerGrade(question).performanceGrade }}</span></th>
                     <th>{{ question.title }}</th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,0) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
                     <th *ngIf='gratherThan(getAnswerGrade(question).capacityGrade,1) && lessThan(getAnswerGrade(question).capacityGrade,4)' class="colored-bar"></th>
@@ -936,22 +949,24 @@
                     <th class="bar-teste">3</th>
                     <th class="bar-teste">4</th>
                     <th class="bar-teste">8</th>
+                    <th class="bar-teste">+8</th>
                     <th class="bar-teste">9</th>
                 </tr>
                 <tr *ngIf="getAnswerGrade(question) !=undefined">
-                    <th>{{ question.code }}.{{ getAnswerGrade(question).generalGrade }}</th>
+                    <th>{{ question.code }}.<span class="colored-font">{{ getAnswerGrade(question).generalGrade }}</span></th>
                     <th>{{ question.title }}</th>
                     <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+4") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
                     <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+3") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
                     <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+2") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
                     <th [ngClass]='{"colored-bar-light":gratherThan(getAnswerGrade(question).generalGrade,"+1") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
-                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,"0"), "colored-bar-light":lessThan(getAnswerGrade(question).generalGrade,"0")}'></th>
+                    <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,"0") && lessThan(getAnswerGrade(question).generalGrade,4), "colored-bar-light":lessThan(getAnswerGrade(question).generalGrade,"0") && lessThan(getAnswerGrade(question).generalGrade,"+4")}'></th>
                     <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,1) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
                     <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,2) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
                     <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,3) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
                     <th [ngClass]='{"colored-bar":gratherThan(getAnswerGrade(question).generalGrade,4) && lessThan(getAnswerGrade(question).generalGrade,4)}'></th>
-                    <th [ngClass]='{"colored-bar":getAnswerGrade(question).generalGrade == "9"}'></th>
                     <th [ngClass]='{"colored-bar":getAnswerGrade(question).generalGrade == "8"}'></th>
+                    <th [ngClass]='{"colored-bar-light":getAnswerGrade(question).generalGrade == "+8"}'></th>
+                    <th [ngClass]='{"colored-bar":getAnswerGrade(question).generalGrade == "9"}'></th>
                 </tr>
             </table>
 

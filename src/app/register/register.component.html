@@ -49,7 +49,7 @@
                         <input mask="(00)00000-0000" maxlength="14" matTooltip="Com DDD" matTooltipPosition="after" matInput placeholder="Celular" formControlName="telephoneNumber" required> 
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Gênero</mat-label>
+                        <mat-label>Sexo</mat-label>
                         <mat-select formControlName="sex">
                             <mat-option *ngFor="let gender of genders" [value]="gender.value">
                                 {{gender.viewValue}}
@@ -59,7 +59,7 @@
 
                     <mat-form-field>
                         <mat-label>Data de Nascimento</mat-label>
-                        <input matInput [matDatepicker]="picker" required readonly (click)="picker.open()" formControlName="birthDate">
+                        <input matInput [matDatepicker]="picker" readonly (click)="picker.open()" required formControlName="birthDate">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>

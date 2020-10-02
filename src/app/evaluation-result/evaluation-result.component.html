@@ -19,10 +19,10 @@
     <hr>
     <h4 matTooltip="Informações a respeito da avaliação"> </h4>
 
-    <!-- FUNÇÕES DO CORPO -->
     <table *ngFor="let answer of evaluation.answers">
         <br *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'">
         
+        <!-- FUNÇÕES DO CORPO -->
         <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'">
             <th>codigo</th>
             <th class="expanded-cell">descrição</th>
@@ -36,7 +36,7 @@
         </tr>
 
         <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FUNÇÕES DO CORPO'" matTooltip="FUNÇÕES DO CORPO">
-            <th>{{ answer.questionCode }}.{{ answer.generalGrade }}</th>
+            <th>{{ answer.questionCode }}.<span class="colored-font">{{ answer.generalGrade }}</span></th>
             <th>{{ answer.questionDescription }}</th>
             <th [ngClass]='{"colored-bar":lessThan(answer.generalGrade,"4"),"c":gratherThan(answer.generalGrade,"8")}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,1) && lessThan(answer.generalGrade,4)}'></th>
@@ -66,7 +66,7 @@
         </tr>
 
         <tr *ngIf="answer.locationGrade != undefined && answer.questionGroup == 'ESTRUTURA DO CORPO'" matTooltip="ESTRUTURA DO CORPO">
-            <th>{{ answer.questionCode }}.{{ answer.locationGrade }}{{ answer.natureGrade }}{{ answer.extensionGrade }}</th>
+            <th>{{ answer.questionCode }}.<span class="colored-font">{{ answer.locationGrade }}{{ answer.natureGrade }}{{ answer.extensionGrade }}</span></th>
             <th>{{ answer.questionDescription }}</th>
             <th [ngClass]='{"colored-bar":lessThan(answer.locationGrade,"7"),"c":gratherThan(answer.locationGrade,"8")}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.locationGrade,1) && lessThan(answer.locationGrade,7)}'></th>
@@ -107,7 +107,8 @@
         </tr>
 
         <br *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'">
-
+        
+        <!-- ATIVIDADE E PARTICIPAÇÃO -->
         <tr *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'">
             <th>codigo</th>
             <th class="expanded-cell">descrição</th>
@@ -120,7 +121,7 @@
             <th class="bar-teste">9</th>
         </tr>
         <tr *ngIf="answer.capacityGrade != undefined && answer.questionGroup == 'ATIVIDADE E PARTICIPAÇÃO'" matTooltip="ATIVIDADE E PARTICIPAÇÃO">
-            <th>{{ answer.questionCode }}.{{ answer.capacityGrade }}{{ answer.performanceGrade }}</th>
+            <th>{{ answer.questionCode }}.<span class="colored-font">{{ answer.capacityGrade }}{{ answer.performanceGrade }}</span></th>
             <th>{{ answer.questionDescription }}</th>
             <th [ngClass]='{"colored-bar":lessThan(answer.capacityGrade,"4"),"c":gratherThan(answer.capacityGrade,"8")}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.capacityGrade,1) && lessThan(answer.capacityGrade,4)}'></th>
@@ -142,7 +143,8 @@
         </tr>
 
         <br *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'">
-
+        
+        <!-- FATORES AMBIENTAIS -->
         <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'">
             <th>código</th>
             <th class="expanded-cell">descrição</th>
@@ -156,22 +158,24 @@
             <th class="bar-teste">3</th>
             <th class="bar-teste">4</th>
             <th class="bar-teste">8</th>
+            <th class="bar-teste">+8</th>
             <th class="bar-teste">9</th>
         </tr>
         <tr *ngIf="answer.generalGrade != undefined && answer.questionGroup == 'FATORES AMBIENTAIS'" matTooltip="FATORES AMBIENTAIS">
-            <th>{{ answer.questionCode }}.{{ answer.generalGrade }}</th>
+            <th>{{ answer.questionCode }}.<span class="colored-font">{{ answer.generalGrade }}</span></th>
             <th>{{ answer.questionDescription }}</th>
             <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+4") && lessThan(answer.generalGrade,"+4")}'></th>
             <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+3") && lessThan(answer.generalGrade,"+4")}'></th>
             <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+2") && lessThan(answer.generalGrade,"+4")}'></th>
             <th [ngClass]='{"colored-bar-light":gratherThan(answer.generalGrade,"+1") && lessThan(answer.generalGrade,"+4")}'></th>
-            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,"0"), "colored-bar-light":lessThan(answer.generalGrade,"0")}'></th>
+            <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,"0") && lessThan(answer.generalGrade,4), "colored-bar-light":lessThan(answer.generalGrade,"0") && lessThan(answer.generalGrade,"+4")}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,1) && lessThan(answer.generalGrade,4)}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,2) && lessThan(answer.generalGrade,4)}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,3) && lessThan(answer.generalGrade,4)}'></th>
             <th [ngClass]='{"colored-bar":gratherThan(answer.generalGrade,4) && lessThan(answer.generalGrade,4)}'></th>
-            <th [ngClass]='{"colored-bar":answer.generalGrade == "9"}'></th>
             <th [ngClass]='{"colored-bar":answer.generalGrade == "8"}'></th>
+            <th [ngClass]='{"colored-bar-light":answer.generalGrade == "+8"}'></th>
+            <th [ngClass]='{"colored-bar":answer.generalGrade == "9"}'></th>
         </tr>
     </table>
 

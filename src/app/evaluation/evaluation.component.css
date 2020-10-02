@@ -30,6 +30,10 @@ table{
     background-color: #e0788b;
 }
 
+.colored-font{
+    color: #e0788b
+}
+
 .mat-stroked-button {
     border: 1px solid currentColor;
     line-height: 35px;
