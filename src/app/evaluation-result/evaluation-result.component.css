@@ -38,6 +38,11 @@ table{
     background-color: #e0788b;
 }
 
+.colored-font{
+    color: #e0788b;
+    margin: 0;
+}
+
 ::ng-deep .mat-accordion {
     flex-direction: column !important;
 }
