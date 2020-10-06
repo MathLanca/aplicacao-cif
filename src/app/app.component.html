@@ -8,13 +8,13 @@
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluation()">
                 <mat-icon class="d-inline p-2 icon-side-menu">add_to_queue</mat-icon><span class="d-inline p-2">Nova Classificação</span></mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluationList()">
-                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Classificação Anteriores</span>
+                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Classificações Anteriores</span>
             </mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientList()">
                 <mat-icon class="d-inline p-2 icon-side-menu">people_alt</mat-icon><span class="d-inline p-2">Pacientes Cadastrados</span></mat-button>
 
             <mat-button *ngIf="role == 'PATIENT'" class="btn-side-menu" mat-list-item (click)="redirectToPatientEvaluationList()">
-                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Meus Relatórios</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Minhas Classificações</span></mat-button>
 
             <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="viewProfile()">
                 <mat-icon class="d-inline p-2 icon-side-menu">person_outline</mat-icon><span class="d-inline p-2">Editar perfil</span></mat-button>

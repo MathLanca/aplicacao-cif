@@ -102,7 +102,7 @@ export class EvaluationResultComponent implements OnInit {
   }
 
   download(){
-    var file = "Avaliação Funcional - " + this.evaluation.patientName;
+    var file = "Classificação Funcional - " + this.evaluation.patientName;
     return xepOnline.Formatter.Format('print', {render:'download', filename: file});
   }
 

@@ -46,7 +46,7 @@ export class PatientEvaluationsComponent implements OnInit {
         console.log(this.patientEvaluations);
       }, error => {
         this.loaded = true;
-        console.log("Erro ao retornar as avaliações do paciente");
+        console.log("Erro ao retornar as classificações do paciente");
       }
     );
   }
