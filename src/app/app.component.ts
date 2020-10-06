@@ -62,7 +62,7 @@ export class AppComponent implements OnChanges {
       var title = window.location.pathname.replace("/","");
       console.log(title);
       if(title.indexOf("evaluation-details") !== -1){
-        this.pageTitlePT = "Detalhes da avaliação";
+        this.pageTitlePT = "Detalhes da classificação";
       } else {
         switch(title){
           case("patientList"): 
@@ -74,13 +74,13 @@ export class AppComponent implements OnChanges {
           case("patientList"): 
             return this.pageTitlePT = 'Listagem de pacientes';
           case("evaluations"): 
-            return this.pageTitlePT = 'Avaliações';
+            return this.pageTitlePT = 'Classificações';
           case("evaluation"): 
-            return this.pageTitlePT = 'Nova Avaliação';
+            return this.pageTitlePT = 'Nova Classificação';
           case("evaluation-list"): 
-            return this.pageTitlePT = 'Consulta avaliação';
+            return this.pageTitlePT = 'Consulta classificação';
           case("patient-evaluations"): 
-            return this.pageTitlePT = 'Avaliações de paciente';
+            return this.pageTitlePT = 'Classificações de paciente';
           case("register"): 
             return this.pageTitlePT = 'Cadastro';
           case("home"):
