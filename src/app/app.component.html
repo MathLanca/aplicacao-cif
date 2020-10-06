@@ -3,25 +3,25 @@
         <mat-toolbar color="warn">{{message}}</mat-toolbar>
         <mat-nav-list class="list-menu-side">
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientRegister()">
-                <mat-icon class="d-inline p-2 icon-side-menu">person_add</mat-icon><span class="d-inline p-2">Cadastrar Paciente</span>
+                <mat-icon class="d-inline p-2 icon-side-menu">person_add</mat-icon><span class="d-inline p-1">Cadastrar Paciente</span>
             </mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluation()">
-                <mat-icon class="d-inline p-2 icon-side-menu">add_to_queue</mat-icon><span class="d-inline p-2">Nova Classificação</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">add_to_queue</mat-icon><span class="d-inline p-1">Nova Classificação</span></mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToEvaluationList()">
-                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Classificações Anteriores</span>
+                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-1">Classificações Anteriores</span>
             </mat-button>
             <mat-button *ngIf="role == 'THERAPIST'" class="btn-side-menu" mat-list-item (click)="redirectToPatientList()">
-                <mat-icon class="d-inline p-2 icon-side-menu">people_alt</mat-icon><span class="d-inline p-2">Pacientes Cadastrados</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">people_alt</mat-icon><span class="d-inline p-1">Pacientes Cadastrados</span></mat-button>
 
             <mat-button *ngIf="role == 'PATIENT'" class="btn-side-menu" mat-list-item (click)="redirectToPatientEvaluationList()">
-                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-2">Minhas Classificações</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">list_alt</mat-icon><span class="d-inline p-1">Minhas Classificações</span></mat-button>
 
             <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="viewProfile()">
-                <mat-icon class="d-inline p-2 icon-side-menu">person_outline</mat-icon><span class="d-inline p-2">Editar perfil</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">person_outline</mat-icon><span class="d-inline p-1">Editar perfil</span></mat-button>
             <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="deleteTherapist()">
-                <mat-icon class="d-inline p-2 icon-side-menu">delete_forever</mat-icon><span class="d-inline p-2">Excluir perfil</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">delete_forever</mat-icon><span class="d-inline p-1">Excluir perfil</span></mat-button>
             <mat-button class="btn-side-menu hidden-button" mat-list-item (click)="logout()">
-                <mat-icon class="d-inline p-2 icon-side-menu">exit_to_app</mat-icon><span class="d-inline p-2">Sair</span></mat-button>
+                <mat-icon class="d-inline p-2 icon-side-menu">exit_to_app</mat-icon><span class="d-inline p-1">Sair</span></mat-button>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
